@@ -1,6 +1,6 @@
 # Dockerfile to deploy in Northflank
 
-FROM oven/bun:edge
+FROM oven/bun:0.7.0
 WORKDIR /app
 COPY package.json package.json
 COPY bun.lockb bun.lockb
