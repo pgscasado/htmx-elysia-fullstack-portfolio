@@ -9,7 +9,7 @@ export default ({ children, ...attributes }: elements.Children & elements.Attrib
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://unpkg.com/htmx.org@1.9.4"></script>
   <link rel="stylesheet" href="/static/styles.css" />
-  ${process.env.NODE_ENV === 'developmente' ? `<script>
+  ${process.env.NODE_ENV === 'development' ? `<script>
     document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
     ':35729/livereload.js?snipver=1"></' + 'script>')
   </script>` : ''}
