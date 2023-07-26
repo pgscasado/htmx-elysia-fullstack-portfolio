@@ -3,13 +3,27 @@
   "version": "1.0.44",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "bun run --watch src/index.ts"
+    "dev": "concurrently \"bun run --watch src/index.tsx\" \"bun run update-css:dev\" \"livereload ./src -ee 'tsx' -w 1000\"",
+    "update-css": "tailwindcss -i ./src/input.css -o ./public/styles.css",
+    "update-css:dev": "tailwindcss -i ./src/input.css -o ./public/styles.css --watch"
   },
   "dependencies": {
-    "elysia": "latest"
+    "@elysiajs/html": "^0.5.2",
+    "@elysiajs/static": "^0.5.3",
+    "@minify-html/node": "^0.11.1",
+    "elysia": "latest",
+    "html-minifier": "^4.0.0",
+    "html-minifier-terser": "^7.2.0",
+    "typed-html": "^3.0.1"
   },
   "devDependencies": {
-    "bun-types": "latest"
+    "@types/html-minifier": "^4.0.2",
+    "@types/html-minifier-terser": "^7.0.0",
+    "bun-html-live-reload": "github:aabccd021/bun-html-live-reload",
+    "bun-types": "latest",
+    "concurrently": "^8.2.0",
+    "livereload": "^0.9.3",
+    "tailwindcss": "^3.3.3"
   },
   "module": "src/index.js"
 }
