@@ -1,6 +1,6 @@
 {
   "name": "portfolio-pedro",
-  "version": "1.0.45-beta.2",
+  "version": "1.0.45-beta.3",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "concurrently \"bun run --watch src/index.tsx\" \"bun run update-css:dev\"",
