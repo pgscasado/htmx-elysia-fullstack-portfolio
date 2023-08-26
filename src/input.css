@@ -2,14 +2,83 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  @apply h-full;
+@layer components {
+  /* Tooltip */
+  /* --- */
+  *:has(span.tooltip) {
+    @apply relative;
+    @apply overflow-visible;  
+  }
+  
+  span.tooltip {
+    @apply text-xs;
+    @apply md:text-base;
+    @apply pointer-events-none;
+    @apply rounded-md;
+    @apply bg-primary-100/60;
+    @apply backdrop-blur-sm;
+    @apply px-2;
+    @apply py-1;
+    @apply absolute;
+    @apply bottom-[100%];
+    @apply right-0;
+    @apply w-max;
+    @apply opacity-0;
+    @apply transition-opacity;
+  }
+  
+  span.tooltip.left-align {
+    @apply left-0;
+    @apply right-auto;
+  }
+  
+  span.tooltip.right-align {
+    @apply left-auto;
+    @apply right-0;
+  }
+  /* --- */
+
+  /* Hero */
+  /* --- */
+  .hero {
+    @apply flex;
+    @apply flex-row;
+    @apply justify-center;
+    @apply bg-primary-100/80;
+    @apply text-gray-900;
+    @apply font-bold;
+  }
+  /* --- */
 }
 
-body {
-  @apply h-full;
-}
-
-main {
-  @apply h-full;
+@layer utilities {
+  /* Navbar transitions */
+  /* --- */
+  nav.htmx-added * li.item-load {
+    @apply aria-selected:text-black;
+  }
+  
+  nav.htmx-swapping * li.item-load {
+    @apply aria-selected:text-black;
+    transition: color 300ms ease-out;
+  }
+  
+  nav * li.item-load {
+    transition: color 300ms ease-out;
+    @apply aria-selected:text-primary-500;
+  }
+  
+  *:has(a.cover-parent) {
+    position: relative;
+  }
+  
+  a.cover-parent {
+    @apply absolute;
+    @apply top-0;
+    @apply left-0;
+    @apply right-0;
+    @apply bottom-0;
+  }
+  
+  /* --- */
 }

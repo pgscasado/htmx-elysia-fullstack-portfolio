@@ -1,10 +1,14 @@
 /** @type {import('tailwindcss').Config} */
+const colors = require('tailwindcss/colors');
+
 export default {
-  mode: "jit",
-  purge: ["./src/components/*.tsx"],
-  content: ["./src/components/*.tsx"],
+  content: ['./src/components/*.tsx', './src/pages/*.tsx'],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: colors.pink,
+      }
+    },
   },
   plugins: [],
 };

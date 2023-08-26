@@ -9,9 +9,14 @@ export default function render(name: string | thtml.CustomElementHandler, attrs?
     minifyCSS: true,
     minifyURLs: true,
     removeComments: true,
+    removeTagWhitespace: true,
     minifyJS: false, // NO JS NEEDED
-    collapseWhitespace: true,
-    collapseInlineTagWhitespace: true,
+    collapseWhitespace: false,
+    collapseInlineTagWhitespace: false,
+    removeEmptyAttributes: true,
     removeAttributeQuotes: true,
-  });
+    sortAttributes: true,
+  }).replace(/\n</g, '<').replace(/>\n/g, '>');
 }
+
+export const renderFragment = (args: { children: string[] }) => args.children.join('\n');
