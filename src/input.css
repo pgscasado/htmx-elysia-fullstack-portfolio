@@ -1,6 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200&family=IBM+Plex+Serif:ital,wght@0,200;0,300;0,400;0,500;1,300;1,400;1,500&family=Roboto+Slab:wght@200;300;500&family=Source+Code+Pro:wght@300;400&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html {
+    @apply font-ibm-serif;
+    @apply font-light;
+    @apply antialiased;
+  }
+}
 
 @layer components {
   /* Tooltip */
@@ -15,7 +24,10 @@
     @apply md:text-base;
     @apply pointer-events-none;
     @apply rounded-md;
-    @apply bg-primary-100/60;
+    @apply bg-base-light-400/20;
+    @apply text-base-dark;
+    @apply dark:bg-base-dark-700/60;
+    @apply dark:text-base-light;
     @apply backdrop-blur-sm;
     @apply px-2;
     @apply py-1;
@@ -41,14 +53,52 @@
   /* Hero */
   /* --- */
   .hero {
+    @apply z-0;
     @apply flex;
     @apply flex-row;
     @apply justify-center;
-    @apply bg-primary-100/80;
-    @apply text-gray-900;
-    @apply font-bold;
+    @apply bg-primary-400/10;
+    @apply dark:bg-primary-500/25;
+    @apply text-base-dark;
+    @apply dark:text-base-light;
+    @apply font-roboto-serif;
+    @apply font-light;
+    @apply overflow-hidden;
+  }
+  .hero::after {
+    @apply -z-[1];
+    @apply absolute top-0 left-0 h-[inherit] w-[inherit];
+    @apply font-source-code mx-auto text-2xl text-center text-base-dark-500/10 dark:text-base-light/10;
+    @apply break-words overflow-hidden;
+    @apply content-['101011000110101011011000010001110101001000110101000101001011001000101111011110011011100011100011001110000011001000110111101011111101001100100011001011110011111000010100101110010110100110110100000100011101010010001101010001010010110010001011110111100110111000111000110011100000110010001101111010111111010011001000110010111100111110000101001011100101101001101101000001000111010100100011010100010100101100100010111101111001101110001110001100111000001100100011011110101111110100110010001100101111001111100001010010111001011010011011010011101101111101011110101100011101100100010010011101001101011101000010100100011100001001101111000101001101000101111010001000110000100001101000010'];
   }
   /* --- */
+  /* ASCII Canvas */
+  /* --- */
+  .canvas-container {
+    @apply relative;
+    @apply m-2;
+  }
+  .canvas-container > canvas {
+    @apply relative;
+    @apply w-auto;
+    @apply h-[90vh];
+    @apply max-w-full;
+    @apply border-primary-500;
+    @apply border-[3px];
+  }
+  .canvas-controls {
+    @apply border-primary-500;
+    @apply border-[3px];
+    @apply rounded-md;
+  }
+  .canvas-controls > * {
+    @apply p-2;
+  }
+  .canvas-controls > input {
+    @apply w-[75%];
+  }
+
 }
 
 @layer utilities {
@@ -60,12 +110,11 @@
   
   nav.htmx-swapping * li.item-load {
     @apply aria-selected:text-black;
-    transition: color 300ms ease-out;
   }
   
   nav * li.item-load {
-    transition: color 300ms ease-out;
-    @apply aria-selected:text-primary-500;
+    @apply dark:aria-selected:text-primary aria-selected:text-secondary;
+    @apply hover:bg-base-dark-900/10 duration-150 transition-colors;
   }
   
   *:has(a.cover-parent) {
