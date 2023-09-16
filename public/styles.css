@@ -720,6 +720,14 @@ span.tooltip.right-align{
   order: -1;
 }
 
+.order-1{
+  order: 1;
+}
+
+.-order-first{
+  order: 9999;
+}
+
 .col-span-2{
   grid-column: span 2 / span 2;
 }
@@ -1141,9 +1149,9 @@ a.cover-parent{
   color: rgb(188 231 111 / var(--tw-text-opacity));
 }
 
-.hover\:text-interactive-600:hover{
+.hover\:text-primary-400:hover{
   --tw-text-opacity: 1;
-  color: rgb(100 152 24 / var(--tw-text-opacity));
+  color: rgb(213 145 199 / var(--tw-text-opacity));
 }
 
 .hover\:opacity-100:hover{
@@ -1197,16 +1205,6 @@ a.cover-parent{
 
 :is(.dark .dark\:opacity-100){
   opacity: 1;
-}
-
-:is(.dark .dark\:hover\:text-interactive-600:hover){
-  --tw-text-opacity: 1;
-  color: rgb(100 152 24 / var(--tw-text-opacity));
-}
-
-:is(.dark .dark\:hover\:text-interactive:hover){
-  --tw-text-opacity: 1;
-  color: rgb(138 201 38 / var(--tw-text-opacity));
 }
 
 @media (min-width: 768px){
