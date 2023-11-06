@@ -21,7 +21,7 @@ const app = new Elysia()
   })
   .use(pageRouter)
   .use(frontend)
-  .listen({ hostname: '127.0.0.1', port: 3000 });
+  .listen({ hostname: '0.0.0.0', port: 3000 });
     
 console.log(
   `🦊 Elysia is running at http://${`localhost`}:${app.server?.port}`
