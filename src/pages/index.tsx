@@ -19,10 +19,11 @@ export const Base = ({ children, class: classes }: { children?: string[], class?
 <html lang='pt-BR' class='dark'>
 <head>
   <meta charset='UTF-8' />
-  <title>Elysia</title>
+  <title>Pedro Casado</title>
   <meta name='viewport' content='width=device-width, initial-scale=1.0' />
   <link rel='stylesheet' href='/static/styles.css' />
   <link rel='stylesheet' href='/static/uicons/css/uicons-brands.css' />
+  <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
   <script src="https://kit.fontawesome.com/9b9fd56c88.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
   <script src='static/htmx.min.js'></script>

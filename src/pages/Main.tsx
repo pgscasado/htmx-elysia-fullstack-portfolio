@@ -6,7 +6,7 @@ import { Highlight } from '@components/Highlight';
 import { Footer } from '../components/Footer';
 
 export default ({ children }: Children ) => (
-  <Base>
+  <Base class='flex flex-col'>
     <Navbar />
     <main class='flex space-y-10 flex-col mx-auto container w-[90vw] md:w-[70vw] mb-[4.5rem]'>
       <div class='hero h-32 w-full space-x-1 md:px-[20%]'>
@@ -142,6 +142,6 @@ export default ({ children }: Children ) => (
         </div>
       </div>
     </main>
-    <Footer />
+    <Footer class='mt-auto'/>
   </Base>
 )
