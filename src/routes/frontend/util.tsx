@@ -1,12 +1,12 @@
 import Elysia, { ws } from 'elysia';
 import path from 'path';
 import fs from 'fs';
-import { setup } from '@root';
+import html from '@elysiajs/html';
 
 const componentsPath = path.join(import.meta.dir, '..', '..', 'components');
 
 export const util = (app: Elysia) => app
-    .use(setup)
+    .use(html())
     .post('/component/:name', async ({ html, body, params, set }) => {
       if (!fs.existsSync(`${componentsPath}/${params.name}.tsx`)) {
         set.status = 404;
