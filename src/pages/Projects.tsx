@@ -26,7 +26,7 @@ export default () => (
         <div class='flex flex-col items-center'>
           <div class='text-3xl mb-2'><Highlight class='font-medium'>2.</Highlight></div>
           <div class='text-base text-justify w-full'>
-            Um <a class='text-interactive hover:text-interactive-300' href='' target='about:blank'>Gerenciador de Múltiplos Agentes de Conversação Fluida</a>, integrado a múltiplas <Highlight>LLMs</Highlight>. Basicamente um projeto que unifica meus conhecimentos de <Highlight>back-end</Highlight> e <Highlight>IA</Highlight>.
+            Um <a class='text-interactive hover:text-interactive-300' href='https://github.com/pgscasado/ai-agent-manager/' target='about:blank'>Gerenciador de Múltiplos Agentes de Conversação Fluida</a>, integrado a múltiplas <Highlight>LLMs</Highlight>. Basicamente um projeto que unifica meus conhecimentos de <Highlight>back-end</Highlight> e <Highlight>IA</Highlight>.
             <br/>
             Esse é um projeto onde pode ser criado um agente de conversação de forma rápida, onde o sistema gerencia todo o input fornecido para <Highlight>Resource-Augmented Generation (RAG)</Highlight> do agente. 
             <br/>
