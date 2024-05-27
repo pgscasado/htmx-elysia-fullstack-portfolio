@@ -5,7 +5,7 @@ export const Footer: Component<{class?: string, currentPage?: string}> = ({ clas
   <div class={`${classes ? classes : ''} mx-auto text-center md:text-left flex flex-col-reverse md:flex-row md:w-[70vw] md:justify-between pb-8`}>
     <div class='col-span-2 my-auto text-sm order-1'>
       Website feito com <span class='text-interactive'><i class='fa-solid fa-heart'></i></span> por <a class='text-interactive hover:text-interactive-300 transition-colors' href='/about'>Pedro Casado</a><br/>
-      &copy; 2023 
+      &copy; {new Date().getFullYear()} 
     </div>
     <ul class='my-auto text-sm md:text-start -order-first md:order-none md:grid md:grid-cols-2 md:gap-x-3'>
       <li class='col-span-2'>Esse é o fim da página, aqui estão alguns links:</li>
