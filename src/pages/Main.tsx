@@ -21,7 +21,7 @@ export default ({ lang }: { lang: Locale }) => {
             <div class='text-sm'>
               {t(lang, 'main.heroRole')}<span class='text-secondary dark:text-primary inline-block'>{t(lang, 'main.heroRoleHighlight')}</span>
             </div>
-            <div class='text-base flex md:grid md:grid-cols-4 justify-items-center max-w-sm [&>i]:duration-300 [&>i]:ease-in-out'>
+            <div class='text-base grid grid-cols-4 gap-x-3 gap-y-1 md:gap-0 justify-items-center max-w-sm [&>i]:duration-300 [&>i]:ease-in-out'>
               <IconStack icons={[
                 'typescript',
                 'javascript',
@@ -69,7 +69,7 @@ export default ({ lang }: { lang: Locale }) => {
           <div class='text-base text-justify'>
             {t(lang, 'main.whatP1Pre')}<Highlight>{t(lang, 'main.whatP1Highlight1')}</Highlight>{t(lang, 'main.whatP1Mid')}<Highlight>{t(lang, 'main.whatP1Highlight2')}</Highlight>{t(lang, 'main.whatP1Post')}
             <div class='w-max mb-2'></div>
-            {t(lang, 'main.whatP2Pre')}<Highlight>{t(lang, 'main.whatP2Highlight1')}</Highlight>{t(lang, 'main.whatP2Mid1')}<Highlight>{t(lang, 'main.whatP2Highlight2')}</Highlight>{t(lang, 'main.whatP2Mid2')}<Highlight>{t(lang, 'main.whatP2Highlight3')}</Highlight>{t(lang, 'main.whatP2Mid3')}<Highlight interactive class='group  md:border-dotted md:border-b-interactive md:dark:border-b-interactive-600 md:border-b-2'>{t(lang, 'main.whatP2NlpLabel')}<span class='md:tooltip left-align md:group-hover:opacity-100 md:max-w-[30vw] md:before:content-[""] before:content-["_"]'>{t(lang, 'main.whatP2NlpTooltip')}</span></Highlight>{t(lang, 'main.whatP2Post')}
+            {t(lang, 'main.whatP2Pre')}<Highlight>{t(lang, 'main.whatP2Highlight1')}</Highlight>{t(lang, 'main.whatP2Mid1')}<Highlight>{t(lang, 'main.whatP2Highlight2')}</Highlight>{t(lang, 'main.whatP2Mid2')}<Highlight>{t(lang, 'main.whatP2Highlight3')}</Highlight>{t(lang, 'main.whatP2Mid3')}<Highlight interactive class='group  md:border-dotted md:border-b-interactive md:dark:border-b-interactive-600 md:border-b-2'>{t(lang, 'main.whatP2NlpLabel')}<span class='md:tooltip md:hidden md:group-hover:block left-align md:group-hover:opacity-100 md:max-w-[30vw] md:before:content-[""] before:content-["_"]'>{t(lang, 'main.whatP2NlpTooltip')}</span></Highlight>{t(lang, 'main.whatP2Post')}
           </div>
         </div>
         <div class='flex flex-col md:flex-row md:space-x-4 items-center'>
@@ -97,7 +97,7 @@ export default ({ lang }: { lang: Locale }) => {
         <div class='flex flex-col md:flex-row md:space-x-4 items-center'>
           <div class='text-3xl mb-2 lg:basis-1/2 md:basis-1/3 text-center md:text-left'>{t(lang, 'main.frontendTitlePre')}<Highlight class='inline-block font-medium'>{t(lang, 'main.frontendTitleHighlight')}</Highlight></div>
           <div class='text-base text-justify basis-auto'>
-            {t(lang, 'main.frontendDescPre')}<Highlight interactive class='group  md:border-dotted md:border-b-interactive md:dark:border-b-interactive-600 md:border-b-2'>{t(lang, 'main.frontendDialogLabel')}<span class='md:tooltip left-align md:group-hover:opacity-100 md:max-w-[30vw] md:before:content-[""] before:content-["_"]'>{t(lang, 'main.frontendDialogTooltipPre')}<i class='fa-solid fa-people-arrows'></i>{t(lang, 'main.frontendDialogTooltipPost')}</span></Highlight>{t(lang, 'main.frontendDescPost')}
+            {t(lang, 'main.frontendDescPre')}<Highlight interactive class='group  md:border-dotted md:border-b-interactive md:dark:border-b-interactive-600 md:border-b-2'>{t(lang, 'main.frontendDialogLabel')}<span class='md:tooltip md:hidden md:group-hover:block left-align md:group-hover:opacity-100 md:max-w-[30vw] md:before:content-[""] before:content-["_"]'>{t(lang, 'main.frontendDialogTooltipPre')}<i class='fa-solid fa-people-arrows'></i>{t(lang, 'main.frontendDialogTooltipPost')}</span></Highlight>{t(lang, 'main.frontendDescPost')}
           </div>
           <div class="text-xl mb-2 md:w-18 basis-1/6">
             <Highlight>{t(lang, 'main.stackUsedHighlight')}</Highlight>{t(lang, 'main.stackUsedRest')}

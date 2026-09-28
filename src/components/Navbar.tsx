@@ -68,6 +68,22 @@ export const Navbar: Component<{
             htmx.toggleClass(htmx.find('html'), 'dark')
           }
         })
+        // keep hover tooltips inside the viewport: where a label lands depends on
+        // how the text wraps, so nudge the tooltip sideways only when it would overflow
+        if (!window.__tooltipClamp) {
+          window.__tooltipClamp = true
+          document.addEventListener('mouseover', (e) => {
+            const group = e.target.closest && e.target.closest('.group')
+            const tip = group && group.querySelector(':scope > span[class*="tooltip"]')
+            if (!tip) return
+            tip.style.transform = ''
+            const r = tip.getBoundingClientRect()
+            if (!r.width) return
+            const vw = document.documentElement.clientWidth, m = 8
+            const shift = r.left < m ? m - r.left : r.right > vw - m ? vw - m - r.right : 0
+            if (shift) tip.style.transform = 'translateX(' + shift + 'px)'
+          })
+        }
       `}
     </script>
   </>
