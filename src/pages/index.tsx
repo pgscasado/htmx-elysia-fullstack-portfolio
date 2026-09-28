@@ -6,17 +6,28 @@ import Elysia from 'elysia';
 import { setup } from '@root';
 import Projects from '@pages/Projects';
 import Contact from '@pages/Contact';
+import { LOCALES, localeToHtmlLang, localePath, type Locale, type PageId } from '@i18n';
 
-export const pageRouter = (app: Elysia) => app
-  .use(setup)
-  .get('/', ({ html }) => html(<Main />))
-  .get('/about', ({ html }) => html(<About />))
-  .get('/projects', ({ html }) => html(<Projects />))
-  .get('/contact', ({ html }) => html(<Contact />));
+const pages: { id: PageId; Page: (props: { lang: Locale }) => string }[] = [
+  { id: '', Page: Main },
+  { id: 'about', Page: About },
+  { id: 'projects', Page: Projects },
+  { id: 'contact', Page: Contact },
+];
 
-export const Base = ({ children, class: classes }: { children?: string[], class?: string }) => `
+export const pageRouter = (app: Elysia) => {
+  app.use(setup);
+  for (const lang of LOCALES) {
+    for (const { id, Page } of pages) {
+      app.get(localePath(lang, id), ({ html }) => html(<Page lang={lang} />));
+    }
+  }
+  return app;
+};
+
+export const Base = ({ children, class: classes, lang }: { children?: string[], class?: string, lang: Locale }) => `
 <!DOCTYPE html>
-<html lang='pt-BR' class='dark'>
+<html lang='${localeToHtmlLang[lang]}' class='dark'>
 <head>
   <meta charset='UTF-8' />
   <title>Pedro Casado</title>

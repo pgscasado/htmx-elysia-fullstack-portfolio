@@ -14,6 +14,7 @@
     "elysia": "latest",
     "html-minifier": "^4.0.0",
     "html-minifier-terser": "^7.2.0",
+    "mysql2": "^3.24.4",
     "typed-html": "^3.0.1"
   },
   "devDependencies": {

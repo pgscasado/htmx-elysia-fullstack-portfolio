@@ -33,4 +33,7 @@ export default {
   "angularjs": "devicon-angularjs-plain",
   "tailwindcss": "devicon-tailwindcss-plain",
   "d3js": "devicon-d3js-plain",
+  "nestjs": "devicon-nestjs-plain",
+  "amazonwebservices": "devicon-amazonwebservices-plain",
+  "googlecloud": "devicon-googlecloud-plain",
 }
