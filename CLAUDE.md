@@ -47,9 +47,16 @@ JSX ergonomics, but the JS payload is just HTMX's ~50KB, not a multi-megabyte bu
   `bun run update-css` (or `update-css:dev` while developing) after class changes.
 - Don't introduce a bundler, a client-side framework, or heavy JS deps — that undercuts the
   whole point of the project. Weigh any new dependency against payload size.
-- `Dockerfile`'s header comment says "Northflank" — that's stale; actual deploy target is
-  **Fly.io** via `.github/workflows/fly.yml` (push to `master` → `flyctl deploy --remote-only`,
-  needs `FLY_API_TOKEN` secret), app name `pedrocasado`, region `gru` (see `fly.toml`).
+- Deployment is a VPS (`ssh tswow-vps`, Ubuntu), not Fly.io — `Dockerfile` and `fly.toml`
+  are leftovers. On the VPS: app in `~/portfolio` run by `portfolio.service` (Bun on
+  127.0.0.1:3000, env in `~/portfolio/.env`), nginx site `pedrocasado.com` with certbot HTTPS
+  (interim hostname `pedrocasado.144-217-92-127.sslip.io` until the domain is bought),
+  translations in MariaDB database `portfolio`.
+- Deploys are automatic: a GitHub push webhook hits `/hooks/portfolio`, handled by
+  `portfolio-webhook.service` (`webhook` package, HMAC-verified, `master` only), which runs
+  `~/deploy/portfolio.sh`: ff-only pull, `bun install`, re-seed only if dictionaries changed,
+  restart. Log: `~/deploy/portfolio-deploy.log`. The server pulls with `--ff-only`, so a
+  force-pushed `master` needs a manual `git reset --hard origin/master` there.
 
 ## Commands
 
