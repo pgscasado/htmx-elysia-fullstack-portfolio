@@ -53,7 +53,7 @@ export default ({ lang }: { lang: Locale }) => (
               <figcaption class='text-sm mt-2 text-center opacity-80'>{t(lang, 'projects.authGifLiveCaption')}</figcaption>
             </figure>
             <figure class='flex flex-col items-center'>
-              <img src='/static/projects/cli-authenticator/camera.gif' alt={t(lang, 'projects.authGifCameraAlt')} width='792' height='560' loading='lazy' class='w-full h-auto rounded-lg border border-black/10 dark:border-white/10'/>
+              <video src='/static/projects/cli-authenticator/camera.mp4' poster='/static/projects/cli-authenticator/camera-poster.jpg' aria-label={t(lang, 'projects.authGifCameraAlt')} width='792' height='560' autoplay loop muted playsinline preload='metadata' class='w-full h-auto rounded-lg border border-black/10 dark:border-white/10'></video>
               <figcaption class='text-sm mt-2 text-center opacity-80'>{t(lang, 'projects.authGifCameraCaption')}</figcaption>
             </figure>
           </div>
