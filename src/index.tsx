@@ -28,7 +28,8 @@ const app = new Elysia()
   })
   .use(pageRouter)
   .use(frontend)
-  .listen({ hostname: '0.0.0.0', port: Number(process.env.PORT) || 3000 });
+  // HOST=127.0.0.1 when running behind a reverse proxy, so the app isn't reachable directly.
+  .listen({ hostname: process.env.HOST || '0.0.0.0', port: Number(process.env.PORT) || 3000 });
 
 console.log(
   `🦊 Elysia is running at http://${`localhost`}:${app.server?.port}`
