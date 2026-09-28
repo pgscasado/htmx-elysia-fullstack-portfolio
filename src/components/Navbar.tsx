@@ -10,7 +10,7 @@ const NavItem: Component<{
 }> = (props) => {
   const href = localePath(props.lang, props.id);
   return (
-    <li class='py-3 px-3 item-load' aria-selected={`${props.active}`}>
+    <li class='py-3 px-1.5 min-[360px]:px-2 sm:px-3 item-load' aria-selected={`${props.active}`}>
       <input class='hidden' name='active' value={`${props.id}`} />
       <a class='cover-parent' href={props.active ? '#' : href} hx-get={href} hx-on='click' hx-swap='outerHTML' hx-target='body' hx-push-url={href} hx-vals="" hx-disable={props.active}></a>
       {props.text}
@@ -23,17 +23,17 @@ export const Navbar: Component<{
   active?: 'about' | 'contact' | 'projects'
 }> = (props) => (
   <>
-    <nav class='w-full mb-12 flex justify-between'>
-      <a class='p-3 hover:bg-base-dark-900/10 duration-150' href={localePath(props.lang)} hx-boost='true'>Pedro Casado</a>
+    <nav class='w-full mb-12 flex justify-between text-sm sm:text-base'>
+      <a class='py-3 px-1.5 min-[360px]:px-2 sm:px-3 whitespace-nowrap hover:bg-base-dark-900/10 duration-150' href={localePath(props.lang)} hx-boost='true'><span class='sm:hidden'>Pedro</span><span class='hidden sm:inline'>Pedro Casado</span></a>
       <ul class='flex'>
-        <li class='group py-3 px-3 hover:opacity-100 hover:bg-base-dark-900/10 duration-150 cursor-pointer' id='theme-selector'>
+        <li class='group py-3 px-1.5 min-[360px]:px-2 sm:px-3 hover:opacity-100 hover:bg-base-dark-900/10 duration-150 cursor-pointer' id='theme-selector'>
           <i class="transition-all duration-150 ease-in-out fa-solid fa-moon visible w-max dark:collapse dark:w-0 dark:opacity-0 opacity-100"></i>
           <i class="transition-colors duration-150 ease-in-out fa-solid fa-sun collapse w-0 opacity-0 dark:visible dark:w-max dark:opacity-100"></i>
         </li>
         <NavItem id='about' lang={props.lang} active={props.active === 'about'} text={t(props.lang, 'nav.about')} />
         <NavItem id='contact' lang={props.lang} active={props.active === 'contact'} text={t(props.lang, 'nav.contact')} />
         <NavItem id='projects' lang={props.lang} active={props.active === 'projects'} text={t(props.lang, 'nav.projects')} />
-        <li class='py-3 px-3'>
+        <li class='py-3 px-1.5 min-[360px]:px-2 sm:px-3'>
           <details class='relative'>
             <summary class='list-none cursor-pointer select-none hover:opacity-70 marker:content-none'>{localeLabel[props.lang]}</summary>
             <ul class='absolute right-0 mt-2 bg-base-light dark:bg-base-dark border border-base-dark-900/10 dark:border-base-light-500/10 shadow-md z-10 min-w-[4rem]'>
