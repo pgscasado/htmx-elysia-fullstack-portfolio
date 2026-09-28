@@ -62,6 +62,17 @@ export default ({ lang }: { lang: Locale }) => (
             <br/><br/>
             {t(lang, 'projects.agentStackPre')}<Highlight><a href='https://elixir-lang.org' target='_blank' rel='noopener noreferrer' class='text-interactive hover:text-interactive-300'>Elixir</a>{t(lang, 'projects.agentStackSep')}<a href='https://www.phoenixframework.org' target='_blank' rel='noopener noreferrer' class='text-interactive hover:text-interactive-300'>Phoenix</a>{t(lang, 'projects.agentStackSep')}<a href='https://github.com/pgvector/pgvector' target='_blank' rel='noopener noreferrer' class='text-interactive hover:text-interactive-300'>PostgreSQL + pgvector</a>{t(lang, 'projects.agentStackSep')}<a href='https://ollama.com' target='_blank' rel='noopener noreferrer' class='text-interactive hover:text-interactive-300'>Ollama</a>{t(lang, 'projects.agentStackAnd')}<a href='https://modelcontextprotocol.io' target='_blank' rel='noopener noreferrer' class='text-interactive hover:text-interactive-300'>MCP</a></Highlight>{t(lang, 'projects.agentStackPost')}
           </div>
+          <div class='grid grid-cols-1 md:grid-cols-2 gap-4 w-full mt-5'>
+            <figure class='flex flex-col items-center'>
+              <img src='/static/projects/ai-agent-manager/chat.gif' alt={t(lang, 'projects.agentGifChatAlt')} width='882' height='628' loading='lazy' class='w-full h-auto rounded-lg border border-black/10 dark:border-white/10'/>
+              <figcaption class='text-sm mt-2 text-center opacity-80'>{t(lang, 'projects.agentGifChatCaption')}</figcaption>
+            </figure>
+            <figure class='flex flex-col items-center'>
+              <img src='/static/projects/ai-agent-manager/events.gif' alt={t(lang, 'projects.agentGifEventsAlt')} width='882' height='628' loading='lazy' class='w-full h-auto rounded-lg border border-black/10 dark:border-white/10'/>
+              <figcaption class='text-sm mt-2 text-center opacity-80'>{t(lang, 'projects.agentGifEventsCaption')}</figcaption>
+            </figure>
+          </div>
+          <div class='text-xs mt-2 opacity-60 w-full text-center'>{t(lang, 'projects.agentGifNote')}</div>
         </div>
         <div class='flex flex-col items-center'>
           <div class='text-3xl mb-2'><Highlight class='font-medium'>4.</Highlight></div>
