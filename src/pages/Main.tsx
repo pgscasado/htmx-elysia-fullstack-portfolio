@@ -4,7 +4,8 @@ import { Navbar } from '@components/Navbar';
 import { IconStack } from '@components/IconStack';
 import { Highlight } from '@components/Highlight';
 import { Footer } from '../components/Footer';
-import { t, type Locale } from '@i18n';
+import { contacts } from '@components/util/contacts';
+import { t, localePath, type Locale } from '@i18n';
 
 export default ({ lang }: { lang: Locale }) => {
   const years = new Date().getFullYear() - 2020;
@@ -34,6 +35,16 @@ export default ({ lang }: { lang: Locale }) => {
             </div>
           </div>
         </div>
+        <div class='flex justify-center'>
+          <a
+            href={localePath(lang, 'projects')}
+            hx-boost='true'
+            class='group inline-flex items-center gap-3 rounded-xl bg-interactive px-8 py-4 text-xl md:text-2xl font-medium text-base-dark shadow-lg shadow-interactive/20 hover:bg-interactive-400 hover:shadow-interactive/40 transition-all'
+          >
+            {t(lang, 'main.projectsCta')}
+            <i class='fa-solid fa-arrow-right transition-transform group-hover:translate-x-1'></i>
+          </a>
+        </div>
         <div class='flex flex-col md:flex-row md:space-x-4 items-center'>
           <div class='text-3xl mb-2 md:mb-0 md:w-[18%]'><Highlight class='font-medium'>{t(lang, 'main.whoTitleHighlight')}</Highlight>{t(lang, 'main.whoTitleRest')}</div>
           <div class='text-base text-justify'>
@@ -41,53 +52,16 @@ export default ({ lang }: { lang: Locale }) => {
           </div>
           <div class='flex flex-row md:flex-col space-y-2 space-x-2 text-3xl md:text-lg [&>i]:duration-300 [&>i]:ease-in-out [&>i]:cursor-pointer'>
             <span></span>
-            <IconStack icons={[
-              {
-                icon: 'discord',
-                href: 'https://discordapp.com/users/188142088691384330',
-                children: (
-                  <span class='tooltip group-hover:opacity-100 transition-all left-align md:right-align'>
-                    @zeroone ou zero-one#8699
-                  </span>
-                )
-              },
-              {
-                icon: 'github',
-                href: 'https://github.com/pgscasado',
-                children: (
-                  <span class="tooltip group-hover:opacity-100">
-                    @pgscasado
-                  </span>
-                )
-              },
-              {
-                icon: 'linkedin',
-                href: 'https://linkedin.com/in/pgscasado',
-                children: (
-                  <span class="tooltip group-hover:opacity-100">
-                    in/pgscasado
-                  </span>
-                )
-              },
-              {
-                icon: 'google',
-                href: 'mailto:pgscasado.pessoal@gmail.com',
-                children: (
-                  <span class="tooltip group-hover:opacity-100">
-                    pgscasado.pessoal@gmail.com
-                  </span>
-                )
-              },
-              {
-                icon: 'whatsapp',
-                href: 'https://api.whatsapp.com/send?phone=5583981661966',
-                children: (
-                  <span class="tooltip group-hover:opacity-100">
-                    +55 (83) 98166-1966
-                  </span>
-                )
-              }
-            ]} class='hover:text-interactive'/>
+            <IconStack icons={contacts.map((c, i) => ({
+              icon: c.icon,
+              href: c.href,
+              children: (
+                // the first icon sits at the left edge on mobile, so its tooltip opens rightwards there
+                <span class={`tooltip group-hover:opacity-100${i === 0 ? ' transition-all left-align md:right-align' : ''}`}>
+                  {c.label}
+                </span>
+              )
+            }))} class='hover:text-interactive'/>
           </div>
         </div>
         <div class='flex flex-col items-center'>
