@@ -27,6 +27,27 @@ export default ({ lang }: { lang: Locale }) => (
         <div class='flex flex-col items-center'>
           <div class='text-3xl mb-2'><Highlight class='font-medium'>2.</Highlight></div>
           <div class='text-base text-justify w-full'>
+            <a href='https://github.com/pgscasado/cli-authenticator/' target='_blank' rel='noopener noreferrer' class='text-interactive hover:text-interactive-300'>{t(lang, 'projects.authLinkLabel')}</a>{t(lang, 'projects.authMid1')}<Highlight>{t(lang, 'projects.authCameraHighlight')}</Highlight>{t(lang, 'projects.authMid2')}
+            <br/><br/>
+            {t(lang, 'projects.authBlock2Pre')}<Highlight>{t(lang, 'projects.authCryptoHighlight')}</Highlight>{t(lang, 'projects.authBlock2Post')}
+            <br/><br/>
+            {t(lang, 'projects.authBlock3Pre')}<Highlight>{t(lang, 'projects.authAnsiHighlight')}</Highlight>{t(lang, 'projects.authBlock3Mid')}<a href='https://github.com/zxing-cpp/zxing-cpp' target='_blank' rel='noopener noreferrer' class='text-interactive hover:text-interactive-300'>{t(lang, 'projects.authZxingLabel')}</a>{t(lang, 'projects.authBlock3Post')}
+          </div>
+          <div class='grid grid-cols-1 md:grid-cols-2 gap-4 w-full mt-5'>
+            <figure class='flex flex-col items-center'>
+              <img src='/static/projects/cli-authenticator/live.gif' alt={t(lang, 'projects.authGifLiveAlt')} width='792' height='560' loading='lazy' class='w-full h-auto rounded-lg border border-black/10 dark:border-white/10'/>
+              <figcaption class='text-sm mt-2 text-center opacity-80'>{t(lang, 'projects.authGifLiveCaption')}</figcaption>
+            </figure>
+            <figure class='flex flex-col items-center'>
+              <img src='/static/projects/cli-authenticator/camera.gif' alt={t(lang, 'projects.authGifCameraAlt')} width='792' height='560' loading='lazy' class='w-full h-auto rounded-lg border border-black/10 dark:border-white/10'/>
+              <figcaption class='text-sm mt-2 text-center opacity-80'>{t(lang, 'projects.authGifCameraCaption')}</figcaption>
+            </figure>
+          </div>
+          <div class='text-xs mt-2 opacity-60 w-full text-center'>{t(lang, 'projects.authGifNote')}</div>
+        </div>
+        <div class='flex flex-col items-center'>
+          <div class='text-3xl mb-2'><Highlight class='font-medium'>3.</Highlight></div>
+          <div class='text-base text-justify w-full'>
             <a class='text-interactive hover:text-interactive-300' href='https://github.com/pgscasado/ai-agent-manager/' target='about:blank'>{t(lang, 'projects.item2LinkLabel')}</a>{t(lang, 'projects.item2Mid1')}<Highlight>{t(lang, 'projects.item2LlmsHighlight')}</Highlight>{t(lang, 'projects.item2Mid2')}<Highlight>{t(lang, 'projects.item2BackendHighlight')}</Highlight>{t(lang, 'projects.item2Mid3')}<Highlight>{t(lang, 'projects.item2AiHighlight')}</Highlight>{t(lang, 'projects.item2Mid4')}
             <br/>
             {t(lang, 'projects.item2Block2Pre')}<Highlight>{t(lang, 'projects.item2RagHighlight')}</Highlight>{t(lang, 'projects.item2Block2Post')}
@@ -42,7 +63,7 @@ export default ({ lang }: { lang: Locale }) => (
           </div>
         </div>
         <div class='flex flex-col items-center'>
-          <div class='text-3xl mb-2'><Highlight class='font-medium'>3.</Highlight></div>
+          <div class='text-3xl mb-2'><Highlight class='font-medium'>4.</Highlight></div>
           <div class='text-base text-justify w-full'>
             <a class='text-interactive hover:text-interactive-300' href='https://drive.google.com/file/d/1cSyCvpOgIb2VhJZHIWtCOQ_5Xpxm3Zqq/view' target='about:blank'>{t(lang, 'projects.item3LinkLabel')}</a>{t(lang, 'projects.item3Mid1')}
             <br/>
@@ -52,7 +73,7 @@ export default ({ lang }: { lang: Locale }) => (
           </div>
         </div>
         <div class='flex flex-col items-center'>
-          <div class='text-3xl mb-2'><Highlight class='font-medium'>4.</Highlight></div>
+          <div class='text-3xl mb-2'><Highlight class='font-medium'>5.</Highlight></div>
           <div class='text-base text-justify w-full'>
             <a class='text-interactive hover:text-interactive-300' href='https://drive.google.com/file/d/1WjjuyG3U9Q7AbcRfIshSUeHDQOqLMs6F/view' target='about:blank'>{t(lang, 'projects.item4LinkLabel')}</a>{t(lang, 'projects.item4Mid1')}
             <br/>
