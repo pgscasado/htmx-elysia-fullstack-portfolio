@@ -39,7 +39,7 @@ export default ({ lang }: { lang: Locale }) => {
           <a
             href={localePath(lang, 'projects')}
             hx-boost='true'
-            class='group inline-flex items-center gap-3 rounded-xl bg-interactive px-8 py-4 text-xl md:text-2xl font-medium text-base-dark shadow-lg shadow-interactive/20 hover:bg-interactive-400 hover:shadow-interactive/40 transition-all'
+            class='group inline-flex items-center gap-3 border-2 border-secondary dark:border-primary px-8 py-4 text-xl md:text-2xl font-medium text-secondary dark:text-primary hover:border-interactive-600 dark:hover:border-interactive transition-colors'
           >
             {t(lang, 'main.projectsCta')}
             <i class='fa-solid fa-arrow-right transition-transform group-hover:translate-x-1'></i>
