@@ -48,18 +48,19 @@ export default ({ lang }: { lang: Locale }) => (
         <div class='flex flex-col items-center'>
           <div class='text-3xl mb-2'><Highlight class='font-medium'>3.</Highlight></div>
           <div class='text-base text-justify w-full'>
-            <a class='text-interactive hover:text-interactive-300' href='https://github.com/pgscasado/ai-agent-manager/' target='about:blank'>{t(lang, 'projects.item2LinkLabel')}</a>{t(lang, 'projects.item2Mid1')}<Highlight>{t(lang, 'projects.item2LlmsHighlight')}</Highlight>{t(lang, 'projects.item2Mid2')}<Highlight>{t(lang, 'projects.item2BackendHighlight')}</Highlight>{t(lang, 'projects.item2Mid3')}<Highlight>{t(lang, 'projects.item2AiHighlight')}</Highlight>{t(lang, 'projects.item2Mid4')}
-            <br/>
-            {t(lang, 'projects.item2Block2Pre')}<Highlight>{t(lang, 'projects.item2RagHighlight')}</Highlight>{t(lang, 'projects.item2Block2Post')}
-            <br/>
-            {t(lang, 'projects.item2Block3')}
-            <br/>
-            {t(lang, 'projects.item2Block4')}
-            <br/>
-            <br/>
-            {t(lang, 'projects.item2Block5Pre')}<Highlight><a href='https://expressjs.com' target='about:blank' class='text-interactive hover:text-interactive-300'>{t(lang, 'projects.item2ExpressLabel')}</a>, <a href='https://zod.dev' target='about:blank' class='text-interactive hover:text-interactive-300'>{t(lang, 'projects.item2ZodLabel')}</a>, <a href='https://xenova.github.io/transformers.js/' target='about:blank' class='text-interactive hover:text-interactive-300'>{t(lang, 'projects.item2TransformersLabel')}</a> e <a href='https://www.mongodb.com/' target='about:blank' class='text-interactive hover:text-interactive-300'>{t(lang, 'projects.item2MongoLabel')}</a></Highlight>{t(lang, 'projects.item2Block5Post')}
-            <br/>
-            {t(lang, 'projects.item2Block6')}
+            <a class='text-interactive hover:text-interactive-300' href='https://github.com/pgscasado/ai-agent-manager/' target='_blank' rel='noopener noreferrer'>{t(lang, 'projects.agentLinkLabel')}</a>{t(lang, 'projects.agentMid1')}<Highlight>{t(lang, 'projects.agentElixirHighlight')}</Highlight>{t(lang, 'projects.agentMid2')}
+            <br/><br/>
+            {t(lang, 'projects.agentEventsPre')}<Highlight>{t(lang, 'projects.agentEventsHighlight')}</Highlight>{t(lang, 'projects.agentEventsPost')}
+            <br/><br/>
+            {t(lang, 'projects.agentOtpPre')}<Highlight>{t(lang, 'projects.agentOtpHighlight')}</Highlight>{t(lang, 'projects.agentOtpPost')}
+            <br/><br/>
+            {t(lang, 'projects.agentPipelinePre')}<Highlight>{t(lang, 'projects.agentPipelineHighlight')}</Highlight>{t(lang, 'projects.agentPipelinePost')}
+            <br/><br/>
+            {t(lang, 'projects.agentModelsPre')}<Highlight>{t(lang, 'projects.agentModelsHighlight')}</Highlight>{t(lang, 'projects.agentModelsPost')}
+            <br/><br/>
+            {t(lang, 'projects.agentRagPre')}<Highlight>{t(lang, 'projects.agentRagHighlight')}</Highlight>{t(lang, 'projects.agentRagMid')}<Highlight>{t(lang, 'projects.agentToolsHighlight')}</Highlight>{t(lang, 'projects.agentRagPost')}
+            <br/><br/>
+            {t(lang, 'projects.agentStackPre')}<Highlight><a href='https://elixir-lang.org' target='_blank' rel='noopener noreferrer' class='text-interactive hover:text-interactive-300'>Elixir</a>{t(lang, 'projects.agentStackSep')}<a href='https://www.phoenixframework.org' target='_blank' rel='noopener noreferrer' class='text-interactive hover:text-interactive-300'>Phoenix</a>{t(lang, 'projects.agentStackSep')}<a href='https://github.com/pgvector/pgvector' target='_blank' rel='noopener noreferrer' class='text-interactive hover:text-interactive-300'>PostgreSQL + pgvector</a>{t(lang, 'projects.agentStackSep')}<a href='https://ollama.com' target='_blank' rel='noopener noreferrer' class='text-interactive hover:text-interactive-300'>Ollama</a>{t(lang, 'projects.agentStackAnd')}<a href='https://modelcontextprotocol.io' target='_blank' rel='noopener noreferrer' class='text-interactive hover:text-interactive-300'>MCP</a></Highlight>{t(lang, 'projects.agentStackPost')}
           </div>
         </div>
         <div class='flex flex-col items-center'>
