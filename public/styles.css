@@ -770,6 +770,10 @@ span.tooltip.right-align{
   margin-bottom: 4.5rem;
 }
 
+.mt-1{
+  margin-top: 0.25rem;
+}
+
 .mt-2{
   margin-top: 0.5rem;
 }
@@ -1358,6 +1362,15 @@ a.cover-parent{
     order: 0;
   }
 
+  .md\:col-span-2{
+    grid-column: span 2 / span 2;
+  }
+
+  .md\:mx-auto{
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   .md\:mb-0{
     margin-bottom: 0px;
   }
@@ -1368,6 +1381,10 @@ a.cover-parent{
 
   .md\:h-\[90vh\]{
     height: 90vh;
+  }
+
+  .md\:w-1\/2{
+    width: 50%;
   }
 
   .md\:w-\[18\%\]{

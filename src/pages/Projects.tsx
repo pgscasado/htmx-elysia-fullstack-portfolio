@@ -23,6 +23,20 @@ export default ({ lang }: { lang: Locale }) => (
             <br/>
             {t(lang, 'projects.item1Mid8')}<Highlight>{t(lang, 'projects.item1JsxHighlight')}</Highlight>{t(lang, 'projects.item1Mid9')}
           </div>
+          <div class='grid grid-cols-1 md:grid-cols-2 gap-4 w-full mt-5'>
+            <figure class='flex flex-col items-center'>
+              <a href='/static/projects/portfolio/render.png' target='_blank' rel='noopener noreferrer' class='w-full'><img src='/static/projects/portfolio/render.png' alt={t(lang, 'projects.item1CodeRenderAlt')} width='855' height='692' loading='lazy' class='w-full h-auto'/></a>
+              <figcaption class='text-sm mt-1 text-center opacity-80'>{t(lang, 'projects.item1CodeRenderCaption')}</figcaption>
+            </figure>
+            <figure class='flex flex-col items-center'>
+              <a href='/static/projects/portfolio/navbar.png' target='_blank' rel='noopener noreferrer' class='w-full'><img src='/static/projects/portfolio/navbar.png' alt={t(lang, 'projects.item1CodeNavAlt')} width='695' height='560' loading='lazy' class='w-full h-auto'/></a>
+              <figcaption class='text-sm mt-1 text-center opacity-80'>{t(lang, 'projects.item1CodeNavCaption')}</figcaption>
+            </figure>
+            <figure class='flex flex-col items-center md:col-span-2 md:w-1/2 md:mx-auto'>
+              <a href='/static/projects/portfolio/router.png' target='_blank' rel='noopener noreferrer' class='w-full'><img src='/static/projects/portfolio/router.png' alt={t(lang, 'projects.item1CodeRouterAlt')} width='762' height='472' loading='lazy' class='w-full h-auto'/></a>
+              <figcaption class='text-sm mt-1 text-center opacity-80'>{t(lang, 'projects.item1CodeRouterCaption')}</figcaption>
+            </figure>
+          </div>
         </div>
         <div class='flex flex-col items-center'>
           <div class='text-3xl mb-2'><Highlight class='font-medium'>2.</Highlight></div>
