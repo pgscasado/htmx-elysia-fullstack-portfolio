@@ -1131,8 +1131,8 @@ span.tooltip.right-align{
   color: rgb(30 16 20 / var(--tw-text-opacity));
 }
 
-.text-base-light-800\/\[\.12\]{
-  color: rgb(125 58 47 / .12);
+.text-base-light-800\/\[\.20\]{
+  color: rgb(125 58 47 / .20);
 }
 
 .text-blue-500{
@@ -1440,8 +1440,8 @@ a.cover-parent{
   background-color: rgb(30 16 20 / var(--tw-bg-opacity));
 }
 
-:is(.dark .dark\:text-base-dark-400\/\[\.12\]){
-  color: rgb(191 120 124 / .12);
+:is(.dark .dark\:text-base-dark-400\/\[\.20\]){
+  color: rgb(191 120 124 / .20);
 }
 
 :is(.dark .dark\:text-base-light){

@@ -24,7 +24,7 @@ export const BinaryWatermark: Component<{ cols?: number, rows?: number, density?
     }
   }
   return (
-    <div aria-hidden='true' class='absolute inset-0 -z-10 pointer-events-none select-none font-source-code text-base-light-800/[.12] dark:text-base-dark-400/[.12]'>
+    <div aria-hidden='true' class='absolute inset-0 -z-10 pointer-events-none select-none font-source-code text-base-light-800/[.20] dark:text-base-dark-400/[.20]'>
       {digits.join('')}
     </div>
   );
