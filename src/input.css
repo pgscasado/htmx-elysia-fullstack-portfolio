@@ -4,7 +4,20 @@
 @tailwind utilities;
 
 @layer base {
+  /* light mode renders the pink/green 10% darker for contrast; .dark keeps the originals */
+  :root {
+    --color-secondary: 211 111 173;     /* #EB7BC0 x 0.9 */
+    --color-interactive: 124 181 34;    /* #8AC926 x 0.9 */
+    --color-interactive-600: 90 137 22; /* #649818 x 0.9 */
+  }
+  :root.dark {
+    --color-secondary: 235 123 192;
+    --color-interactive: 138 201 38;
+    --color-interactive-600: 100 152 24;
+  }
+
   html {
+    @apply motion-safe:scroll-smooth;
     @apply font-ibm-serif;
     @apply font-light;
     @apply antialiased;

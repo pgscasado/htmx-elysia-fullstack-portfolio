@@ -5,36 +5,48 @@ import { IconStack } from '@components/IconStack';
 import { Highlight } from '@components/Highlight';
 import { Footer } from '../components/Footer';
 import { contacts } from '@components/util/contacts';
+import brands from '@components/util/brands';
 import { t, localePath, type Locale } from '@i18n';
 
 export default ({ lang }: { lang: Locale }) => {
   const years = new Date().getFullYear() - 2020;
   return (
     <Base lang={lang} class='flex flex-col'>
-      <Navbar lang={lang} />
-      <main class='flex space-y-10 flex-col mx-auto container w-[90vw] md:w-[70vw] mb-[4.5rem]'>
-        <div class='hero h-32 w-full space-x-1 md:px-[20%]'>
-          <div class='my-auto text-3xl text-end'>
-            {t(lang, 'main.heroGreetingPre')}<Highlight>Pedro</Highlight>{t(lang, 'main.heroGreetingPost')}
-          </div>
-          <div class='h-fit my-auto flex-col'>
-            <div class='text-sm'>
-              {t(lang, 'main.heroRole')}<span class='text-secondary dark:text-primary inline-block'>{t(lang, 'main.heroRoleHighlight')}</span>
-            </div>
-            <div class='text-base grid grid-cols-4 gap-x-3 gap-y-1 md:gap-0 justify-items-center max-w-sm [&>i]:duration-300 [&>i]:ease-in-out'>
-              <IconStack icons={[
-                'typescript',
-                'javascript',
-                'nodejs',
-                'nextjs',
-                'python',
-                'rust',
-                'lua',
-                'docker',
-              ]} class='hover:text-interactive mb-1'/>
-            </div>
-          </div>
+      <section class='min-h-[100svh] flex flex-col'>
+        <Navbar lang={lang} />
+        {/* -mt-12 cancels the navbar's bottom margin so the block sits at the true center */}
+        <div class='flex-1 -mt-12 px-4 flex flex-col items-center justify-center text-center'>
+          <p class='font-source-code text-sm md:text-base opacity-70 mb-3'>{t(lang, 'main.heroGreeting')}</p>
+          <h1 class='font-roboto-serif font-light text-5xl sm:text-6xl md:text-7xl'>Pedro Casado</h1>
+          <p class='mt-4 text-xl md:text-2xl'>
+            {t(lang, 'main.heroRolePre')}<Highlight>{t(lang, 'main.heroRoleHighlight')}</Highlight>{t(lang, 'main.heroRolePost')}
+          </p>
+          <ul class='mt-10 flex items-center gap-6 text-2xl md:text-3xl'>
+            {contacts.map((c) => (
+              <li>
+                <a
+                  href={c.href}
+                  aria-label={c.label}
+                  class='group hover:text-interactive transition-colors'
+                  {...(c.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                >
+                  <i class={brands[c.icon]}></i>
+                  <span class='tooltip group-hover:opacity-100'>{c.label}</span>
+                </a>
+              </li>
+            )).join('')}
+          </ul>
         </div>
+        {/* plain anchor + scroll-smooth on <html>: #content starts right at 100svh, so no JS needed */}
+        <a
+          href='#content'
+          aria-label={t(lang, 'main.scrollDown')}
+          class='mx-auto mb-6 p-2 text-2xl opacity-60 hover:opacity-100 hover:text-interactive transition-[color,opacity] motion-safe:animate-soft-bounce'
+        >
+          <i class='fa-solid fa-chevron-down'></i>
+        </a>
+      </section>
+      <main id='content' class='flex space-y-10 flex-col mx-auto container w-[90vw] md:w-[70vw] pt-16 mb-[4.5rem]'>
         <div class='flex justify-center'>
           <a
             href={localePath(lang, 'projects')}
@@ -49,19 +61,6 @@ export default ({ lang }: { lang: Locale }) => {
           <div class='text-3xl mb-2 md:mb-0 md:w-[18%]'><Highlight class='font-medium'>{t(lang, 'main.whoTitleHighlight')}</Highlight>{t(lang, 'main.whoTitleRest')}</div>
           <div class='text-base text-justify'>
             {t(lang, 'main.whoIntroPre')}<Highlight>{t(lang, 'main.whoExperienceHighlight').replace('{years}', String(years))}</Highlight>{t(lang, 'main.whoIntroMid')}<Highlight>{t(lang, 'main.whoDomainsHighlight')}</Highlight>{t(lang, 'main.whoIntroPost')}
-          </div>
-          <div class='flex flex-row md:flex-col space-y-2 space-x-2 text-3xl md:text-lg [&>i]:duration-300 [&>i]:ease-in-out [&>i]:cursor-pointer'>
-            <span></span>
-            <IconStack icons={contacts.map((c, i) => ({
-              icon: c.icon,
-              href: c.href,
-              children: (
-                // the first icon sits at the left edge on mobile, so its tooltip opens rightwards there
-                <span class={`tooltip group-hover:opacity-100${i === 0 ? ' transition-all left-align md:right-align' : ''}`}>
-                  {c.label}
-                </span>
-              )
-            }))} class='hover:text-interactive'/>
           </div>
         </div>
         <div class='flex flex-col items-center'>

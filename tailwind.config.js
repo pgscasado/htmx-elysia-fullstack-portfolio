@@ -5,6 +5,15 @@ export default {
   darkMode: 'class',
   theme: {
     extend: {
+      keyframes: {
+        'soft-bounce': {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(0.5rem)' },
+        },
+      },
+      animation: {
+        'soft-bounce': 'soft-bounce 2s ease-in-out infinite',
+      },
       fontFamily: {
         'source-code': ['Source Code Pro', 'monospace'],
         'ibm-serif': ['IBM Plex Serif', 'serif'],
@@ -25,8 +34,10 @@ export default {
           '900': '#6a3157',
           '950': '#3f1832',
         },
+        // secondary/interactive DEFAULT and interactive-600 are CSS vars so light mode
+        // can render them darker (see input.css)
         'secondary': {
-          DEFAULT: '#EB7BC0',
+          DEFAULT: 'rgb(var(--color-secondary) / <alpha-value>)',
           '50': '#fcf3f9',
           '100': '#fbe8f5',
           '200': '#f8d2ec',
@@ -68,14 +79,14 @@ export default {
           '950': '#1e1014',
         },
         'interactive': {
-          DEFAULT: '#8AC926',
+          DEFAULT: 'rgb(var(--color-interactive) / <alpha-value>)',
           '50': '#f6fce9',
           '100': '#ebf8cf',
           '200': '#d8f2a4',
           '300': '#bce76f',
           '400': '#a1d843',
           '500': '#8ac926',
-          '600': '#649818',
+          '600': 'rgb(var(--color-interactive-600) / <alpha-value>)',
           '700': '#4d7417',
           '800': '#3f5c18',
           '900': '#364e19',
