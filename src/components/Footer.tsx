@@ -1,6 +1,7 @@
 import render, { Children } from '@core/render';
 import type { Component } from '@root/types/component';
 import { ContactBar } from '@components/ContactBar';
+import { contact } from '@components/util/contacts';
 import { t, localePath, type Locale } from '@i18n';
 
 // Pages other than the main one (which has its own contact icons) and the
@@ -18,7 +19,7 @@ export const Footer: Component<{ lang: Locale, class?: string, currentPage?: str
       <ul class='my-auto text-sm md:text-start -order-first md:order-none md:grid md:grid-cols-2 md:gap-x-3'>
         <li class='col-span-2'>{t(lang, 'footer.linksIntro')}</li>
         <li><a hx-boost='true' class='text-interactive hover:text-interactive-300 transition-colors' href={localePath(lang, 'about')}>{t(lang, 'footer.aboutLink')} {currentPage === 'about' ? t(lang, 'footer.youAreHere') : ''}</a></li>
-        <li><a hx-boost='true' target='_blank' class='text-interactive hover:text-interactive-300 transition-colors' href='https://github.com/pgscasado'>{t(lang, 'footer.githubLink')}</a></li>
+        <li><a hx-boost='true' target='_blank' class='text-interactive hover:text-interactive-300 transition-colors' href={contact.github.href}>{t(lang, 'footer.githubLink')}</a></li>
         <li><a hx-boost='true' class='text-interactive hover:text-interactive-300 transition-colors' href={localePath(lang, 'contact')}>{t(lang, 'footer.contactLink')} {currentPage === 'contact' ? t(lang, 'footer.youAreHere') : ''}</a></li>
         <li><a hx-boost='true' class='text-interactive hover:text-interactive-300 transition-colors' href={localePath(lang, 'projects')}>{t(lang, 'footer.projectsLink')} {currentPage === 'projects' ? t(lang, 'footer.youAreHere') : ''}</a></li>
       </ul>

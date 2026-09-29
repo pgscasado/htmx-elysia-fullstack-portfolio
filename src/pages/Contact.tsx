@@ -3,6 +3,7 @@ import { Navbar } from '@components/Navbar';
 import { Base } from '@pages';
 import { Footer } from '@components/Footer';
 import { Highlight } from '@components/Highlight';
+import { contact } from '@components/util/contacts';
 import { t, type Locale } from '@i18n';
 
 export default ({ lang }: { lang: Locale }) => (
@@ -19,7 +20,7 @@ export default ({ lang }: { lang: Locale }) => (
           <div class='text-base text-justify w-full'>
             {t(lang, 'contact.linkedinDesc')}
             <br/>
-            <a href='https://linkedin.com/in/pgscasado' target='about:blank' class='text-interactive hover:text-interactive-300'>linkedin.com/in/pgscasado</a>
+            <a href={contact.linkedin.href} target='about:blank' class='text-interactive hover:text-interactive-300'>{contact.linkedin.href.replace('https://', '')}</a>
           </div>
         </div>
         <div class='flex flex-col items-center'>
@@ -27,7 +28,7 @@ export default ({ lang }: { lang: Locale }) => (
           <div class='text-base text-justify w-full'>
             {t(lang, 'contact.emailDesc')}
             <br/>
-            <a href='mailto:pgscasado.pessoal@gmail.com' target='about:blank' class='text-interactive hover:text-interactive-300'>pgscasado.pessoal@gmail.com</a>
+            <a href={contact.email.href} target='about:blank' class='text-interactive hover:text-interactive-300'>{contact.email.label}</a>
           </div>
         </div>
         <div class='flex flex-col items-center'>
@@ -35,7 +36,7 @@ export default ({ lang }: { lang: Locale }) => (
           <div class='text-base text-justify w-full'>
             {t(lang, 'contact.phoneDesc')}
             <br/>
-            <a href='https://api.whatsapp.com/send?phone=5583981661966' target='about:blank' class='text-interactive hover:text-interactive-300'>+55 (83) 98166-1966</a>
+            <a href={contact.whatsapp.href} target='about:blank' class='text-interactive hover:text-interactive-300'>{contact.whatsapp.label}</a>
           </div>
         </div>
         <div class='flex flex-col items-center'>
@@ -43,7 +44,7 @@ export default ({ lang }: { lang: Locale }) => (
           <div class='text-base text-justify w-full'>
             {t(lang, 'contact.discordDesc')}
             <br/>
-            <a href='https://discord.com/users/188142088691384330' target='about:blank' class='text-interactive hover:text-interactive-300'>@zeroone ou zero-one#8699</a>
+            <a href={contact.discord.href} target='about:blank' class='text-interactive hover:text-interactive-300'>{contact.discord.label}</a>
           </div>
         </div>
       </div>

@@ -1,0 +1,33 @@
+{
+  "email": "hey@pedrocasado.com",
+  "github": "pgscasado",
+  "linkedin": "pgscasado",
+  "whatsapp": {
+    "phone": "5583981661966",
+    "display": "+55 (83) 98166-1966"
+  },
+  "discord": {
+    "userId": "188142088691384330",
+    "handle": "@zeroone",
+    "tag": "zero-one#8699"
+  },
+  "projects": {
+    "htmxElysia": "https://github.com/pgscasado/htmx-elysia-fullstack/",
+    "cliAuthenticator": "https://github.com/pgscasado/cli-authenticator/",
+    "aiAgentManager": "https://github.com/pgscasado/ai-agent-manager/",
+    "item3": "https://drive.google.com/file/d/1cSyCvpOgIb2VhJZHIWtCOQ_5Xpxm3Zqq/view",
+    "item4": "https://drive.google.com/file/d/1WjjuyG3U9Q7AbcRfIshSUeHDQOqLMs6F/view"
+  },
+  "references": {
+    "elysia": "https://elysiajs.com/",
+    "htmx": "https://htmx.org",
+    "zxingCpp": "https://github.com/zxing-cpp/zxing-cpp",
+    "elixir": "https://elixir-lang.org",
+    "phoenix": "https://www.phoenixframework.org",
+    "pgvector": "https://github.com/pgvector/pgvector",
+    "ollama": "https://ollama.com",
+    "mcp": "https://modelcontextprotocol.io",
+    "puppeteer": "https://pptr.dev/",
+    "cheerio": "https://cheerio.js.org/"
+  }
+}

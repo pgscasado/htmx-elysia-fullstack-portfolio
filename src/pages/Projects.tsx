@@ -3,6 +3,7 @@ import { Footer } from '@components/Footer';
 import { Highlight } from '@components/Highlight';
 import render from '@core/render';
 import { Base } from '@pages';
+import links from '@root/links.json';
 import { t, localePath, type Locale } from '@i18n';
 
 export default ({ lang }: { lang: Locale }) => (
@@ -14,7 +15,7 @@ export default ({ lang }: { lang: Locale }) => (
         <div class='flex flex-col items-center'>
           <div class='text-3xl mb-2'><Highlight class='font-medium'>1.</Highlight></div>
           <div class='text-base text-justify w-full'>
-            <a href='https://github.com/pgscasado/htmx-elysia-fullstack/' target='about:blank' class='text-interactive hover:text-interactive-300'>{t(lang, 'projects.item1LinkLabel')}</a>{t(lang, 'projects.item1Mid1')}<a class='text-interactive hover:text-interactive-300' href='https://elysiajs.com/' target='about:blank'>{t(lang, 'projects.item1ElysiaLabel')}</a>{t(lang, 'projects.item1Mid2')}<a href='https://htmx.org' target='_blank' rel='noopener noreferrer' class='text-interactive hover:text-interactive-300'>{t(lang, 'projects.item1HtmxLabel')}</a>{t(lang, 'projects.item1Mid3')} <br/>
+            <a href={links.projects.htmxElysia} target='about:blank' class='text-interactive hover:text-interactive-300'>{t(lang, 'projects.item1LinkLabel')}</a>{t(lang, 'projects.item1Mid1')}<a class='text-interactive hover:text-interactive-300' href={links.references.elysia} target='about:blank'>{t(lang, 'projects.item1ElysiaLabel')}</a>{t(lang, 'projects.item1Mid2')}<a href={links.references.htmx} target='_blank' rel='noopener noreferrer' class='text-interactive hover:text-interactive-300'>{t(lang, 'projects.item1HtmxLabel')}</a>{t(lang, 'projects.item1Mid3')} <br/>
             <Highlight>{t(lang, 'projects.item1Highlight1')}</Highlight>
             <br/>
             {t(lang, 'projects.item1Mid4')}<Highlight>{t(lang, 'projects.item1SpaHighlight')}</Highlight>{t(lang, 'projects.item1Mid5')}
@@ -41,11 +42,11 @@ export default ({ lang }: { lang: Locale }) => (
         <div class='flex flex-col items-center'>
           <div class='text-3xl mb-2'><Highlight class='font-medium'>2.</Highlight></div>
           <div class='text-base text-justify w-full'>
-            <a href='https://github.com/pgscasado/cli-authenticator/' target='_blank' rel='noopener noreferrer' class='text-interactive hover:text-interactive-300'>{t(lang, 'projects.authLinkLabel')}</a>{t(lang, 'projects.authMid1')}<Highlight>{t(lang, 'projects.authCameraHighlight')}</Highlight>{t(lang, 'projects.authMid2')}
+            <a href={links.projects.cliAuthenticator} target='_blank' rel='noopener noreferrer' class='text-interactive hover:text-interactive-300'>{t(lang, 'projects.authLinkLabel')}</a>{t(lang, 'projects.authMid1')}<Highlight>{t(lang, 'projects.authCameraHighlight')}</Highlight>{t(lang, 'projects.authMid2')}
             <br/><br/>
             {t(lang, 'projects.authBlock2Pre')}<Highlight>{t(lang, 'projects.authCryptoHighlight')}</Highlight>{t(lang, 'projects.authBlock2Post')}
             <br/><br/>
-            {t(lang, 'projects.authBlock3Pre')}<Highlight>{t(lang, 'projects.authAnsiHighlight')}</Highlight>{t(lang, 'projects.authBlock3Mid')}<a href='https://github.com/zxing-cpp/zxing-cpp' target='_blank' rel='noopener noreferrer' class='text-interactive hover:text-interactive-300'>{t(lang, 'projects.authZxingLabel')}</a>{t(lang, 'projects.authBlock3Post')}
+            {t(lang, 'projects.authBlock3Pre')}<Highlight>{t(lang, 'projects.authAnsiHighlight')}</Highlight>{t(lang, 'projects.authBlock3Mid')}<a href={links.references.zxingCpp} target='_blank' rel='noopener noreferrer' class='text-interactive hover:text-interactive-300'>{t(lang, 'projects.authZxingLabel')}</a>{t(lang, 'projects.authBlock3Post')}
           </div>
           <div class='grid grid-cols-1 md:grid-cols-2 gap-4 w-full mt-5'>
             <figure class='flex flex-col items-center'>
@@ -62,7 +63,7 @@ export default ({ lang }: { lang: Locale }) => (
         <div class='flex flex-col items-center'>
           <div class='text-3xl mb-2'><Highlight class='font-medium'>3.</Highlight></div>
           <div class='text-base text-justify w-full'>
-            <a class='text-interactive hover:text-interactive-300' href='https://github.com/pgscasado/ai-agent-manager/' target='_blank' rel='noopener noreferrer'>{t(lang, 'projects.agentLinkLabel')}</a>{t(lang, 'projects.agentMid1')}<Highlight>{t(lang, 'projects.agentElixirHighlight')}</Highlight>{t(lang, 'projects.agentMid2')}
+            <a class='text-interactive hover:text-interactive-300' href={links.projects.aiAgentManager} target='_blank' rel='noopener noreferrer'>{t(lang, 'projects.agentLinkLabel')}</a>{t(lang, 'projects.agentMid1')}<Highlight>{t(lang, 'projects.agentElixirHighlight')}</Highlight>{t(lang, 'projects.agentMid2')}
             <br/><br/>
             {t(lang, 'projects.agentEventsPre')}<Highlight>{t(lang, 'projects.agentEventsHighlight')}</Highlight>{t(lang, 'projects.agentEventsPost')}
             <br/><br/>
@@ -74,7 +75,7 @@ export default ({ lang }: { lang: Locale }) => (
             <br/><br/>
             {t(lang, 'projects.agentRagPre')}<Highlight>{t(lang, 'projects.agentRagHighlight')}</Highlight>{t(lang, 'projects.agentRagMid')}<Highlight>{t(lang, 'projects.agentToolsHighlight')}</Highlight>{t(lang, 'projects.agentRagPost')}
             <br/><br/>
-            {t(lang, 'projects.agentStackPre')}<Highlight><a href='https://elixir-lang.org' target='_blank' rel='noopener noreferrer' class='text-interactive hover:text-interactive-300'>Elixir</a>{t(lang, 'projects.agentStackSep')}<a href='https://www.phoenixframework.org' target='_blank' rel='noopener noreferrer' class='text-interactive hover:text-interactive-300'>Phoenix</a>{t(lang, 'projects.agentStackSep')}<a href='https://github.com/pgvector/pgvector' target='_blank' rel='noopener noreferrer' class='text-interactive hover:text-interactive-300'>PostgreSQL + pgvector</a>{t(lang, 'projects.agentStackSep')}<a href='https://ollama.com' target='_blank' rel='noopener noreferrer' class='text-interactive hover:text-interactive-300'>Ollama</a>{t(lang, 'projects.agentStackAnd')}<a href='https://modelcontextprotocol.io' target='_blank' rel='noopener noreferrer' class='text-interactive hover:text-interactive-300'>MCP</a></Highlight>{t(lang, 'projects.agentStackPost')}
+            {t(lang, 'projects.agentStackPre')}<Highlight><a href={links.references.elixir} target='_blank' rel='noopener noreferrer' class='text-interactive hover:text-interactive-300'>Elixir</a>{t(lang, 'projects.agentStackSep')}<a href={links.references.phoenix} target='_blank' rel='noopener noreferrer' class='text-interactive hover:text-interactive-300'>Phoenix</a>{t(lang, 'projects.agentStackSep')}<a href={links.references.pgvector} target='_blank' rel='noopener noreferrer' class='text-interactive hover:text-interactive-300'>PostgreSQL + pgvector</a>{t(lang, 'projects.agentStackSep')}<a href={links.references.ollama} target='_blank' rel='noopener noreferrer' class='text-interactive hover:text-interactive-300'>Ollama</a>{t(lang, 'projects.agentStackAnd')}<a href={links.references.mcp} target='_blank' rel='noopener noreferrer' class='text-interactive hover:text-interactive-300'>MCP</a></Highlight>{t(lang, 'projects.agentStackPost')}
           </div>
           <div class='grid grid-cols-1 md:grid-cols-2 gap-4 w-full mt-5'>
             <figure class='flex flex-col items-center'>
@@ -91,7 +92,7 @@ export default ({ lang }: { lang: Locale }) => (
         <div class='flex flex-col items-center'>
           <div class='text-3xl mb-2'><Highlight class='font-medium'>4.</Highlight></div>
           <div class='text-base text-justify w-full'>
-            <a class='text-interactive hover:text-interactive-300' href='https://drive.google.com/file/d/1cSyCvpOgIb2VhJZHIWtCOQ_5Xpxm3Zqq/view' target='about:blank'>{t(lang, 'projects.item3LinkLabel')}</a>{t(lang, 'projects.item3Mid1')}
+            <a class='text-interactive hover:text-interactive-300' href={links.projects.item3} target='about:blank'>{t(lang, 'projects.item3LinkLabel')}</a>{t(lang, 'projects.item3Mid1')}
             <br/>
             {t(lang, 'projects.item3Block2')}
             <br/><br/>
@@ -101,12 +102,12 @@ export default ({ lang }: { lang: Locale }) => (
         <div class='flex flex-col items-center'>
           <div class='text-3xl mb-2'><Highlight class='font-medium'>5.</Highlight></div>
           <div class='text-base text-justify w-full'>
-            <a class='text-interactive hover:text-interactive-300' href='https://drive.google.com/file/d/1WjjuyG3U9Q7AbcRfIshSUeHDQOqLMs6F/view' target='about:blank'>{t(lang, 'projects.item4LinkLabel')}</a>{t(lang, 'projects.item4Mid1')}
+            <a class='text-interactive hover:text-interactive-300' href={links.projects.item4} target='about:blank'>{t(lang, 'projects.item4LinkLabel')}</a>{t(lang, 'projects.item4Mid1')}
             <br/>
             {t(lang, 'projects.item4Block2Pre')}<Highlight>{t(lang, 'projects.item4VLibrasHighlight')}</Highlight>{t(lang, 'projects.item4Block2Post')}
             <br/>
             <br/>
-            {t(lang, 'projects.item4Block3Pre')}<Highlight>{t(lang, 'projects.item4ScrapingHighlight')}</Highlight>{t(lang, 'projects.item4Block3Mid')}<Highlight>{t(lang, 'projects.item4JsHighlight')}</Highlight>{t(lang, 'projects.item4Block3Post')}<a href='https://pptr.dev/' target='about:blank' class='text-interactive hover:text-interactive-300'>{t(lang, 'projects.item4PuppeteerLabel')}</a> e <a href='https://cheerio.js.org/' target='about:blank' class='text-interactive hover:text-interactive-300'>{t(lang, 'projects.item4CheerioLabel')}</a>{t(lang, 'projects.item4Block3End')}
+            {t(lang, 'projects.item4Block3Pre')}<Highlight>{t(lang, 'projects.item4ScrapingHighlight')}</Highlight>{t(lang, 'projects.item4Block3Mid')}<Highlight>{t(lang, 'projects.item4JsHighlight')}</Highlight>{t(lang, 'projects.item4Block3Post')}<a href={links.references.puppeteer} target='about:blank' class='text-interactive hover:text-interactive-300'>{t(lang, 'projects.item4PuppeteerLabel')}</a> e <a href={links.references.cheerio} target='about:blank' class='text-interactive hover:text-interactive-300'>{t(lang, 'projects.item4CheerioLabel')}</a>{t(lang, 'projects.item4Block3End')}
           </div>
         </div>
         <div class='flex flex-col items-center'>
