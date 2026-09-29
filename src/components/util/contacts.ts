@@ -8,7 +8,7 @@ export type Contact = {
   external: boolean;
 };
 
-// Hrefs and labels derived from src/links.json — edit that file, not this one.
+// Hrefs and labels derived from src/links.json. Edit that file, not this one.
 export const contact = {
   discord: { icon: 'discord', href: `https://discord.com/users/${links.discord.userId}`, label: `${links.discord.handle} · ${links.discord.tag}`, external: true },
   github: { icon: 'github', href: `https://github.com/${links.github}`, label: `@${links.github}`, external: true },

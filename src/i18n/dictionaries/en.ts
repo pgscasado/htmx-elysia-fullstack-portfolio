@@ -236,4 +236,14 @@ export const en: Dictionary = {
     discordTitle: 'Discord',
     discordDesc: "For more casual, quick discussions, you can find me on Discord. Add me to chat about projects, ask questions, or just to exchange ideas about web development and Discord bot development:",
   },
+  seo: {
+    mainTitle: 'Pedro Casado :: Full-stack Developer',
+    mainDescription: 'Pedro Casado, full-stack developer from Brazil. Scalable, reliable web systems, back-end engineering, integrations and infrastructure for enterprise clients.',
+    aboutTitle: 'About Pedro Casado :: Full-stack Developer',
+    aboutDescription: 'Meet Pedro Casado: full-stack web developer with a research background and experience building systems for healthcare, fintech and automation.',
+    projectsTitle: 'Projects :: Pedro Casado, Full-stack Developer',
+    projectsDescription: "Pedro Casado's projects: an HTMX + Elysia portfolio, a terminal camera authenticator, an Elixir AI agent manager and more.",
+    contactTitle: 'Contact :: Pedro Casado, Full-stack Developer',
+    contactDescription: 'Reach Pedro Casado, full-stack developer, on LinkedIn, email, WhatsApp or Discord about projects, job opportunities or just a chat about tech.',
+  },
 } as const;

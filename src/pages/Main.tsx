@@ -12,7 +12,7 @@ import { t, localePath, type Locale } from '@i18n';
 export default ({ lang }: { lang: Locale }) => {
   const years = new Date().getFullYear() - 2020;
   return (
-    <Base lang={lang} class='flex flex-col'>
+    <Base lang={lang} page='' class='flex flex-col'>
       <section class='relative isolate overflow-hidden min-h-[100svh] flex flex-col'>
         <BinaryWatermark />
         <Navbar lang={lang} />

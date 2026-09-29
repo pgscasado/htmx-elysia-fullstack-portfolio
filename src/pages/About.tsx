@@ -8,7 +8,7 @@ import { t, localePath, type Locale } from '@i18n';
 export default ({ lang }: { lang: Locale }) => {
   const years = new Date().getFullYear() - 2020;
   return (
-    <Base lang={lang} class='flex flex-col md:h-[90vh]'>
+    <Base lang={lang} page='about' class='flex flex-col md:h-[90vh]'>
       <div>
         <Navbar lang={lang} active='about'/>
         <div class='flex space-y-10 flex-col mx-auto container w-[90vw] md:w-[70vw] mb-[4.5rem]'>

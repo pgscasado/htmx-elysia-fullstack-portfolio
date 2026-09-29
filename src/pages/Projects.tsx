@@ -7,7 +7,7 @@ import links from '@root/links.json';
 import { t, localePath, type Locale } from '@i18n';
 
 export default ({ lang }: { lang: Locale }) => (
-  <Base lang={lang} class='flex flex-col md:h-[90vh]'>
+  <Base lang={lang} page='projects' class='flex flex-col md:h-[90vh]'>
     <Navbar lang={lang} active='projects'/>
     <div class='flex space-y-10 flex-col mx-auto container w-[90vw] md:w-[70vw] mb-[4.5rem]'>
       <div class='text-3xl mb-2 md:mb-0 md:w-max'>{t(lang, 'projects.titlePre')}<Highlight class='font-medium'>{t(lang, 'projects.titleHighlight')}</Highlight></div>

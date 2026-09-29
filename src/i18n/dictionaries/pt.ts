@@ -234,6 +234,16 @@ export const pt = {
     discordTitle: 'Discord',
     discordDesc: 'Para discussões mais informais e rápidas, você pode me encontrar no Discord. Adicione-me para conversar sobre projetos, tirar dúvidas ou simplesmente para trocar ideias sobre desenvolvimento web e desenvolvimento de bots Discord:',
   },
+  seo: {
+    mainTitle: 'Pedro Casado :: Desenvolvedor Full-stack',
+    mainDescription: 'Pedro Casado, desenvolvedor full-stack de Maringá - PR. Sistemas web escaláveis e confiáveis, back-end, integrações e infraestrutura para clientes corporativos.',
+    aboutTitle: 'Sobre Pedro Casado :: Desenvolvedor Full-stack',
+    aboutDescription: 'Conheça Pedro Casado: desenvolvedor web full-stack com experiência em pesquisa, back-end, integrações e sistemas para saúde, fintech e automação.',
+    projectsTitle: 'Projetos :: Pedro Casado, Desenvolvedor Full-stack',
+    projectsDescription: 'Projetos de Pedro Casado: portfólio com HTMX e Elysia, autenticador por câmera no terminal, gerenciador de agentes de IA em Elixir e mais.',
+    contactTitle: 'Contato :: Pedro Casado, Desenvolvedor Full-stack',
+    contactDescription: 'Fale com Pedro Casado, desenvolvedor full-stack, por LinkedIn, email, WhatsApp ou Discord para projetos, vagas ou uma boa conversa sobre tecnologia.',
+  },
 } as const;
 
 export type Dictionary = typeof pt;

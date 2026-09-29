@@ -7,6 +7,7 @@ import { setup } from '@root';
 import Projects from '@pages/Projects';
 import Contact from '@pages/Contact';
 import { LOCALES, localeToHtmlLang, localePath, type Locale, type PageId } from '@i18n';
+import { seoHead, robotsTxt, sitemapXml } from '@components/util/seo';
 
 const pages: { id: PageId; Page: (props: { lang: Locale }) => string }[] = [
   { id: '', Page: Main },
@@ -22,16 +23,18 @@ export const pageRouter = (app: Elysia) => {
       app.get(localePath(lang, id), ({ html }) => html(<Page lang={lang} />));
     }
   }
+  app.get('/robots.txt', () => new Response(robotsTxt(), { headers: { 'content-type': 'text/plain; charset=utf-8' } }));
+  app.get('/sitemap.xml', () => new Response(sitemapXml(), { headers: { 'content-type': 'application/xml; charset=utf-8' } }));
   return app;
 };
 
-export const Base = ({ children, class: classes, lang }: { children?: string[], class?: string, lang: Locale }) => `
+export const Base = ({ children, class: classes, lang, page }: { children?: string[], class?: string, lang: Locale, page: PageId }) => `
 <!DOCTYPE html>
 <html lang='${localeToHtmlLang[lang]}' class='dark'>
 <head>
   <meta charset='UTF-8' />
-  <title>Pedro Casado</title>
   <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+  ${seoHead(lang, page)}
   <link rel='stylesheet' href='/static/styles.css' />
   <link rel='stylesheet' href='/static/uicons/css/uicons-brands.css' />
   <link rel="icon" type="image/x-icon" href="/static/favicon.ico">

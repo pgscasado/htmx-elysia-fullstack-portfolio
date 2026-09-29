@@ -7,7 +7,7 @@ import { contact } from '@components/util/contacts';
 import { t, type Locale } from '@i18n';
 
 export default ({ lang }: { lang: Locale }) => (
-  <Base lang={lang} class='flex flex-col md:h-[90vh]'>
+  <Base lang={lang} page='contact' class='flex flex-col md:h-[90vh]'>
     <Navbar lang={lang} active='contact'/>
     <div class='flex space-y-10 flex-col mx-auto container w-[90vw] md:w-[70vw] mb-[4.5rem]'>
       <div class='text-3xl mb-2 md:mb-0 md:w-max'>{t(lang, 'contact.titlePre')}<Highlight class='font-medium'>{t(lang, 'contact.titleHighlight')}</Highlight></div>
