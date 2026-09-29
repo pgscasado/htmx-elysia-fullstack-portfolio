@@ -666,15 +666,13 @@ span.tooltip.right-align{
 
 /* --- */
 
-/* Hero */
-
-/* --- */
-
-/* --- */
-
 /* ASCII Canvas */
 
 /* --- */
+
+.pointer-events-none{
+  pointer-events: none;
+}
 
 .visible{
   visibility: visible;
@@ -692,8 +690,20 @@ span.tooltip.right-align{
   position: relative;
 }
 
+.inset-0{
+  inset: 0px;
+}
+
 .right-0{
   right: 0px;
+}
+
+.isolate{
+  isolation: isolate;
+}
+
+.-z-10{
+  z-index: -10;
 }
 
 .z-10{
@@ -938,6 +948,10 @@ span.tooltip.right-align{
   margin-bottom: calc(1.25rem * var(--tw-space-y-reverse));
 }
 
+.overflow-hidden{
+  overflow: hidden;
+}
+
 .scroll-smooth{
   scroll-behavior: smooth;
 }
@@ -1115,6 +1129,10 @@ span.tooltip.right-align{
 .text-base-dark{
   --tw-text-opacity: 1;
   color: rgb(30 16 20 / var(--tw-text-opacity));
+}
+
+.text-base-light-800\/\[\.12\]{
+  color: rgb(125 58 47 / .12);
 }
 
 .text-blue-500{
@@ -1420,6 +1438,10 @@ a.cover-parent{
 :is(.dark .dark\:bg-base-dark){
   --tw-bg-opacity: 1;
   background-color: rgb(30 16 20 / var(--tw-bg-opacity));
+}
+
+:is(.dark .dark\:text-base-dark-400\/\[\.12\]){
+  color: rgb(191 120 124 / .12);
 }
 
 :is(.dark .dark\:text-base-light){

@@ -3,6 +3,7 @@ import { Base } from '@pages';
 import { Navbar } from '@components/Navbar';
 import { IconStack } from '@components/IconStack';
 import { Highlight } from '@components/Highlight';
+import { BinaryWatermark } from '@components/BinaryWatermark';
 import { Footer } from '../components/Footer';
 import { contacts } from '@components/util/contacts';
 import brands from '@components/util/brands';
@@ -12,7 +13,8 @@ export default ({ lang }: { lang: Locale }) => {
   const years = new Date().getFullYear() - 2020;
   return (
     <Base lang={lang} class='flex flex-col'>
-      <section class='min-h-[100svh] flex flex-col'>
+      <section class='relative isolate overflow-hidden min-h-[100svh] flex flex-col'>
+        <BinaryWatermark />
         <Navbar lang={lang} />
         {/* -mt-12 cancels the navbar's bottom margin so the block sits at the true center */}
         <div class='flex-1 -mt-12 px-4 flex flex-col items-center justify-center text-center'>
