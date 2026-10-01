@@ -5,6 +5,7 @@ export const en: Dictionary = {
     about: 'About',
     projects: 'Projects',
     contact: 'Contact',
+    themeToggle: 'Toggle dark mode',
   },
   footer: {
     madeWithPre: 'Website made with ',

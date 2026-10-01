@@ -5,6 +5,7 @@ export const es: Dictionary = {
     about: 'Sobre mí',
     projects: 'Proyectos',
     contact: 'Contacto',
+    themeToggle: 'Cambiar modo oscuro',
   },
   footer: {
     madeWithPre: 'Sitio hecho con ',

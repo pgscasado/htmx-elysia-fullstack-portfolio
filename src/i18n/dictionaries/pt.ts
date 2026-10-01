@@ -3,6 +3,7 @@ export const pt = {
     about: 'Sobre',
     projects: 'Projetos',
     contact: 'Contato',
+    themeToggle: 'Alternar modo escuro',
   },
   footer: {
     madeWithPre: 'Website feito com ',
