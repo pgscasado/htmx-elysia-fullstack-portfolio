@@ -1,6 +1,10 @@
 import render from '@core/render';
 import type { Component } from '@root/types/component';
 import placeholders from '@components/util/lqip.json';
+import { asset } from '@core/asset';
+
+// placeholders are keyed by the plain /static path; the browser gets a content-hashed URL
+const versioned = (src: string) => asset(src.replace(/^\/static\//, ''));
 
 // 6x6 PNG (see scripts/lqip.ts) stretched and gaussian-blurred inside an SVG. The alpha
 // table snaps the blur's own faded edges back to opaque, then a feathered rect mask fades
@@ -17,7 +21,7 @@ export const lqip = (src: string) => {
 // input.css). `class` goes on the <img>, so borders/rounding only appear with the real image
 export const Img: Component<{ src: string, alt: string, width: string, height: string, class?: string }> = ({ src, alt, width, height, class: classes }) => (
   <span class='lqip' style={lqip(src)}>
-    <img src={src} alt={alt} width={width} height={height} loading='lazy' decoding='async' {...(classes ? { class: classes } : {})} onload="this.parentNode.classList.add('loaded')"/>
+    <img src={versioned(src)} alt={alt} width={width} height={height} loading='lazy' decoding='async' {...(classes ? { class: classes } : {})} onload="this.parentNode.classList.add('loaded')"/>
   </span>
 );
 
@@ -26,6 +30,6 @@ export const Img: Component<{ src: string, alt: string, width: string, height: s
 // already covers that and a poster would just paint in top-to-bottom over it
 export const Video: Component<{ src: string, label: string, width: string, height: string, class?: string }> = ({ src, label, width, height, class: classes }) => (
   <span class='lqip' style={lqip(src)}>
-    <video src={src} aria-label={label} width={width} height={height} style={`aspect-ratio:${width}/${height}`} autoplay loop muted playsinline preload='auto' {...(classes ? { class: classes } : {})} oncanplaythrough="this.parentNode.classList.add('loaded')"></video>
+    <video src={versioned(src)} aria-label={label} width={width} height={height} style={`aspect-ratio:${width}/${height}`} autoplay loop muted playsinline preload='auto' {...(classes ? { class: classes } : {})} oncanplaythrough="this.parentNode.classList.add('loaded')"></video>
   </span>
 );

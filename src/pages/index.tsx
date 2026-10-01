@@ -3,7 +3,7 @@ import render from '@core/render';
 import Main from '@pages/Main';
 import About from '@pages/About';
 import Elysia from 'elysia';
-import { readFileSync } from 'fs';
+import { asset, inlineCss, INLINE_CSS_MARKER } from '@core/asset';
 import { setup } from '@root';
 import Projects from '@pages/Projects';
 import Contact from '@pages/Contact';
@@ -21,24 +21,12 @@ export const pageRouter = (app: Elysia) => {
   app.use(setup);
   for (const lang of LOCALES) {
     for (const { id, Page } of pages) {
-      app.get(localePath(lang, id), ({ html }) => html(<Page lang={lang} />));
+      app.get(localePath(lang, id), ({ html }) => html(inlineCss(<Page lang={lang} />)));
     }
   }
   app.get('/robots.txt', () => new Response(robotsTxt(), { headers: { 'content-type': 'text/plain; charset=utf-8' } }));
   app.get('/sitemap.xml', () => new Response(sitemapXml(), { headers: { 'content-type': 'application/xml; charset=utf-8' } }));
   return app;
-};
-
-// /static URL with a content hash, so nginx can cache it for a year and a deploy still busts it.
-// Hashed once per process in production; per render in dev, where the CSS watcher rewrites it
-const assetHashes = new Map<string, string>();
-const asset = (path: string) => {
-  let hash = assetHashes.get(path);
-  if (!hash) {
-    hash = Bun.hash(readFileSync(`public/${path}`)).toString(36).slice(0, 8);
-    if (process.env.NODE_ENV !== 'development') assetHashes.set(path, hash);
-  }
-  return `/static/${path}?v=${hash}`;
 };
 
 export const Base = ({ children, class: classes, lang, page }: { children?: string[], class?: string, lang: Locale, page: PageId }) => `
@@ -51,7 +39,7 @@ export const Base = ({ children, class: classes, lang, page }: { children?: stri
   <link rel='preload' href='/static/fonts/ibm-plex-serif-300.woff2' as='font' type='font/woff2' crossorigin />
   <link rel='preload' href='/static/fonts/ibm-plex-serif-500.woff2' as='font' type='font/woff2' crossorigin />
   ${page === '' ? `<link rel='preload' href='/static/fonts/roboto-slab-300.woff2' as='font' type='font/woff2' crossorigin />` : ''}
-  <link rel='stylesheet' href='${asset('styles.css')}' />
+  <link rel='stylesheet' href='${INLINE_CSS_MARKER}' />
   <noscript><style>.lqip>img,.lqip>video{opacity:1}</style></noscript>
   <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
   <script src='${asset('htmx.min.js')}' defer></script>

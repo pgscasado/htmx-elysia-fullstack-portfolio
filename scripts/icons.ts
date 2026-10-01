@@ -58,7 +58,7 @@ for (const { family, prefix, css, font } of fonts) {
   await Bun.write(`public/fonts/${name}`, woff2);
   console.log(`${family}: ${used.size} classes, ${codepoints.size} glyphs, ${woff2.length} bytes -> ${name}`);
 
-  out += `@font-face{font-family:"${family}";src:url(/static/fonts/${name}) format("woff2");font-weight:normal;font-style:normal;font-display:block}\n${rules}`;
+  out += `@font-face{font-family:"${family}";src:url(/static/fonts/${name}) format("woff2");font-weight:normal;font-style:normal;font-display:swap}\n${rules}`;
 }
 
 await Bun.write('src/icons.css', out);
