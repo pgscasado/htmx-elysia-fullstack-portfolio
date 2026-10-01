@@ -1,5 +1,6 @@
 import render, { renderFragment } from '@core/render'
 import { Component } from '@root/types/component'
+import { Icon } from '@components/Icon'
 import { t, localePath, LOCALES, localeLabel, type Locale, type PageId } from '@i18n'
 
 const NavItem: Component<{
@@ -27,8 +28,10 @@ export const Navbar: Component<{
       <a class='py-3 px-1.5 min-[360px]:px-2 sm:px-3 whitespace-nowrap hover:bg-base-dark-900/10 duration-150' href={localePath(props.lang)} hx-boost='true'><span class='sm:hidden'>Pedro</span><span class='hidden sm:inline'>Pedro Casado</span></a>
       <ul class='flex'>
         <li class='group py-3 px-1.5 min-[360px]:px-2 sm:px-3 hover:opacity-100 hover:bg-base-dark-900/10 duration-150 cursor-pointer' id='theme-selector'>
-          <i class="transition-all duration-150 ease-in-out fa-solid fa-moon visible w-max dark:collapse dark:w-0 dark:opacity-0 opacity-100"></i>
-          <i class="transition-colors duration-150 ease-in-out fa-solid fa-sun collapse w-0 opacity-0 dark:visible dark:w-max dark:opacity-100"></i>
+          <span class='relative inline-block w-[1em] h-[1em] align-[-0.125em]'>
+            <Icon name='moon' class='absolute inset-0 m-auto transition-opacity duration-300 dark:opacity-0'/>
+            <Icon name='sun' class='absolute inset-0 m-auto transition-opacity duration-300 opacity-0 dark:opacity-100'/>
+          </span>
         </li>
         <NavItem id='about' lang={props.lang} active={props.active === 'about'} text={t(props.lang, 'nav.about')} />
         <NavItem id='contact' lang={props.lang} active={props.active === 'contact'} text={t(props.lang, 'nav.contact')} />
@@ -59,19 +62,19 @@ export const Navbar: Component<{
     </nav>
     <script>
       {`
-        htmx.on('#theme-selector', 'click', function (e) {
-          htmx.toggleClass(htmx.find('html'), 'dark')
-        })
-        document.addEventListener('keyup', () => {
-          console.log('key pressed')
-          if (event.key === 't') {
-            htmx.toggleClass(htmx.find('html'), 'dark')
-          }
-        })
-        // keep hover tooltips inside the viewport: where a label lands depends on
-        // how the text wraps, so nudge the tooltip sideways only when it would overflow
-        if (!window.__tooltipClamp) {
-          window.__tooltipClamp = true
+        // plain DOM, no htmx: htmx is deferred, so it isn't loaded yet when this runs. Delegated
+        // listeners, registered once, so boosted navigations (which re-run this) don't stack them
+        if (!window.__navInit) {
+          window.__navInit = true
+          const toggleTheme = () => document.documentElement.classList.toggle('dark')
+          document.addEventListener('click', (e) => {
+            if (e.target.closest && e.target.closest('#theme-selector')) toggleTheme()
+          })
+          document.addEventListener('keyup', (e) => {
+            if (e.key === 't' && !e.target.closest('input, textarea, select, [contenteditable]')) toggleTheme()
+          })
+          // keep hover tooltips inside the viewport: where a label lands depends on
+          // how the text wraps, so nudge the tooltip sideways only when it would overflow
           document.addEventListener('mouseover', (e) => {
             const group = e.target.closest && e.target.closest('.group')
             const tip = group && group.querySelector(':scope > span[class*="tooltip"]')

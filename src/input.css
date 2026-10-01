@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200&family=IBM+Plex+Serif:ital,wght@0,200;0,300;0,400;0,500;1,300;1,400;1,500&family=Roboto+Slab:wght@200;300;500&family=Source+Code+Pro:wght@300;400&display=swap');
+@import './fonts.css';
+@import './icons.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -60,6 +61,27 @@
   span.tooltip.right-align {
     @apply left-auto;
     @apply right-0;
+  }
+  /* --- */
+
+  /* Blurred placeholder (LQIP) while an image/video loads - see components/Img.tsx */
+  /* --- */
+  .lqip {
+    @apply relative block w-full;
+  }
+  .lqip::before {
+    content: '';
+    @apply absolute inset-0 transition-opacity duration-500;
+    background: var(--lqip) center / 100% 100%;
+  }
+  .lqip > img, .lqip > video {
+    @apply relative block w-full h-auto opacity-0 transition-opacity duration-500;
+  }
+  .lqip.loaded::before {
+    @apply opacity-0;
+  }
+  .lqip.loaded > img, .lqip.loaded > video {
+    @apply opacity-100;
   }
   /* --- */
 

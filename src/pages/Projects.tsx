@@ -1,6 +1,7 @@
 import { Navbar } from '@components';
 import { Footer } from '@components/Footer';
 import { Highlight } from '@components/Highlight';
+import { Img, Video } from '@components/Img';
 import render from '@core/render';
 import { Base } from '@pages';
 import links from '@root/links.json';
@@ -26,15 +27,15 @@ export default ({ lang }: { lang: Locale }) => (
           </div>
           <div class='grid grid-cols-1 md:grid-cols-2 gap-4 w-full mt-5'>
             <figure class='flex flex-col items-center'>
-              <a href='/static/projects/portfolio/render.png' target='_blank' rel='noopener noreferrer' class='w-full'><img src='/static/projects/portfolio/render.png' alt={t(lang, 'projects.item1CodeRenderAlt')} width='855' height='692' loading='lazy' class='w-full h-auto'/></a>
+              <a href='/static/projects/portfolio/render.png' target='_blank' rel='noopener noreferrer' class='w-full'><Img src='/static/projects/portfolio/render.png' alt={t(lang, 'projects.item1CodeRenderAlt')} width='855' height='692'/></a>
               <figcaption class='text-sm mt-1 text-center opacity-80'>{t(lang, 'projects.item1CodeRenderCaption')}</figcaption>
             </figure>
             <figure class='flex flex-col items-center'>
-              <a href='/static/projects/portfolio/navbar.png' target='_blank' rel='noopener noreferrer' class='w-full'><img src='/static/projects/portfolio/navbar.png' alt={t(lang, 'projects.item1CodeNavAlt')} width='695' height='560' loading='lazy' class='w-full h-auto'/></a>
+              <a href='/static/projects/portfolio/navbar.png' target='_blank' rel='noopener noreferrer' class='w-full'><Img src='/static/projects/portfolio/navbar.png' alt={t(lang, 'projects.item1CodeNavAlt')} width='695' height='560'/></a>
               <figcaption class='text-sm mt-1 text-center opacity-80'>{t(lang, 'projects.item1CodeNavCaption')}</figcaption>
             </figure>
             <figure class='flex flex-col items-center md:col-span-2 md:w-1/2 md:mx-auto'>
-              <a href='/static/projects/portfolio/router.png' target='_blank' rel='noopener noreferrer' class='w-full'><img src='/static/projects/portfolio/router.png' alt={t(lang, 'projects.item1CodeRouterAlt')} width='762' height='472' loading='lazy' class='w-full h-auto'/></a>
+              <a href='/static/projects/portfolio/router.png' target='_blank' rel='noopener noreferrer' class='w-full'><Img src='/static/projects/portfolio/router.png' alt={t(lang, 'projects.item1CodeRouterAlt')} width='762' height='472'/></a>
               <figcaption class='text-sm mt-1 text-center opacity-80'>{t(lang, 'projects.item1CodeRouterCaption')}</figcaption>
             </figure>
           </div>
@@ -50,11 +51,11 @@ export default ({ lang }: { lang: Locale }) => (
           </div>
           <div class='grid grid-cols-1 md:grid-cols-2 gap-4 w-full mt-5'>
             <figure class='flex flex-col items-center'>
-              <img src='/static/projects/cli-authenticator/live.gif' alt={t(lang, 'projects.authGifLiveAlt')} width='792' height='560' loading='lazy' class='w-full h-auto rounded-lg border border-black/10 dark:border-white/10'/>
+              <Img src='/static/projects/cli-authenticator/live.gif' alt={t(lang, 'projects.authGifLiveAlt')} width='792' height='560' class='rounded-lg border border-black/10 dark:border-white/10'/>
               <figcaption class='text-sm mt-2 text-center opacity-80'>{t(lang, 'projects.authGifLiveCaption')}</figcaption>
             </figure>
             <figure class='flex flex-col items-center'>
-              <video src='/static/projects/cli-authenticator/camera.mp4' poster='/static/projects/cli-authenticator/camera-poster.jpg' aria-label={t(lang, 'projects.authGifCameraAlt')} width='792' height='560' autoplay loop muted playsinline preload='metadata' class='w-full h-auto rounded-lg border border-black/10 dark:border-white/10'></video>
+              <Video src='/static/projects/cli-authenticator/camera.mp4' label={t(lang, 'projects.authGifCameraAlt')} width='792' height='560' class='rounded-lg border border-black/10 dark:border-white/10'/>
               <figcaption class='text-sm mt-2 text-center opacity-80'>{t(lang, 'projects.authGifCameraCaption')}</figcaption>
             </figure>
           </div>
@@ -79,11 +80,11 @@ export default ({ lang }: { lang: Locale }) => (
           </div>
           <div class='grid grid-cols-1 md:grid-cols-2 gap-4 w-full mt-5'>
             <figure class='flex flex-col items-center'>
-              <img src='/static/projects/ai-agent-manager/chat.gif' alt={t(lang, 'projects.agentGifChatAlt')} width='882' height='628' loading='lazy' class='w-full h-auto rounded-lg border border-black/10 dark:border-white/10'/>
+              <Img src='/static/projects/ai-agent-manager/chat.gif' alt={t(lang, 'projects.agentGifChatAlt')} width='882' height='628' class='rounded-lg border border-black/10 dark:border-white/10'/>
               <figcaption class='text-sm mt-2 text-center opacity-80'>{t(lang, 'projects.agentGifChatCaption')}</figcaption>
             </figure>
             <figure class='flex flex-col items-center'>
-              <img src='/static/projects/ai-agent-manager/events.gif' alt={t(lang, 'projects.agentGifEventsAlt')} width='882' height='628' loading='lazy' class='w-full h-auto rounded-lg border border-black/10 dark:border-white/10'/>
+              <Img src='/static/projects/ai-agent-manager/events.gif' alt={t(lang, 'projects.agentGifEventsAlt')} width='882' height='628' class='rounded-lg border border-black/10 dark:border-white/10'/>
               <figcaption class='text-sm mt-2 text-center opacity-80'>{t(lang, 'projects.agentGifEventsCaption')}</figcaption>
             </figure>
           </div>

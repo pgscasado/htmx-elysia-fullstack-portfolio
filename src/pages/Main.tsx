@@ -3,6 +3,7 @@ import { Base } from '@pages';
 import { Navbar } from '@components/Navbar';
 import { IconStack } from '@components/IconStack';
 import { Highlight } from '@components/Highlight';
+import { Icon } from '@components/Icon';
 import { BinaryWatermark } from '@components/BinaryWatermark';
 import { Footer } from '../components/Footer';
 import { contacts } from '@components/util/contacts';
@@ -45,7 +46,7 @@ export default ({ lang }: { lang: Locale }) => {
           aria-label={t(lang, 'main.scrollDown')}
           class='mx-auto mb-6 p-2 text-2xl opacity-60 hover:opacity-100 hover:text-interactive transition-[color,opacity] motion-safe:animate-soft-bounce'
         >
-          <i class='fa-solid fa-chevron-down'></i>
+          <Icon name='chevron-down'/>
         </a>
       </section>
       <main id='content' class='flex space-y-10 flex-col mx-auto container w-[90vw] md:w-[70vw] pt-16 mb-[4.5rem]'>
@@ -56,7 +57,7 @@ export default ({ lang }: { lang: Locale }) => {
             class='group inline-flex items-center gap-3 border-2 border-secondary dark:border-primary px-8 py-4 text-xl md:text-2xl font-medium text-secondary dark:text-primary hover:border-interactive-600 dark:hover:border-interactive transition-colors'
           >
             {t(lang, 'main.projectsCta')}
-            <i class='fa-solid fa-arrow-right transition-transform group-hover:translate-x-1'></i>
+            <Icon name='arrow-right' class='transition-transform group-hover:translate-x-1'/>
           </a>
         </div>
         <div class='flex flex-col md:flex-row md:space-x-4 items-center'>

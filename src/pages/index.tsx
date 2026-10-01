@@ -3,6 +3,7 @@ import render from '@core/render';
 import Main from '@pages/Main';
 import About from '@pages/About';
 import Elysia from 'elysia';
+import { readFileSync } from 'fs';
 import { setup } from '@root';
 import Projects from '@pages/Projects';
 import Contact from '@pages/Contact';
@@ -28,6 +29,18 @@ export const pageRouter = (app: Elysia) => {
   return app;
 };
 
+// /static URL with a content hash, so nginx can cache it for a year and a deploy still busts it.
+// Hashed once per process in production; per render in dev, where the CSS watcher rewrites it
+const assetHashes = new Map<string, string>();
+const asset = (path: string) => {
+  let hash = assetHashes.get(path);
+  if (!hash) {
+    hash = Bun.hash(readFileSync(`public/${path}`)).toString(36).slice(0, 8);
+    if (process.env.NODE_ENV !== 'development') assetHashes.set(path, hash);
+  }
+  return `/static/${path}?v=${hash}`;
+};
+
 export const Base = ({ children, class: classes, lang, page }: { children?: string[], class?: string, lang: Locale, page: PageId }) => `
 <!DOCTYPE html>
 <html lang='${localeToHtmlLang[lang]}' class='dark'>
@@ -35,14 +48,15 @@ export const Base = ({ children, class: classes, lang, page }: { children?: stri
   <meta charset='UTF-8' />
   <meta name='viewport' content='width=device-width, initial-scale=1.0' />
   ${seoHead(lang, page)}
-  <link rel='stylesheet' href='/static/styles.css' />
-  <link rel='stylesheet' href='/static/uicons/css/uicons-brands.css' />
+  <link rel='preload' href='/static/fonts/ibm-plex-serif-300.woff2' as='font' type='font/woff2' crossorigin />
+  <link rel='preload' href='/static/fonts/ibm-plex-serif-500.woff2' as='font' type='font/woff2' crossorigin />
+  ${page === '' ? `<link rel='preload' href='/static/fonts/roboto-slab-300.woff2' as='font' type='font/woff2' crossorigin />` : ''}
+  <link rel='stylesheet' href='${asset('styles.css')}' />
+  <noscript><style>.lqip>img,.lqip>video{opacity:1}</style></noscript>
   <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
-  <script src="https://kit.fontawesome.com/9b9fd56c88.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
-  <script src='static/htmx.min.js'></script>
-  <script src="static/htmx.json-enc.js"></script>
-  ${process.env.NODE_ENV === 'development' ? '<script src="static/frontend-dev-reload.js"></script>' : ''}
+  <script src='${asset('htmx.min.js')}' defer></script>
+  <script src='${asset('htmx.json-enc.js')}' defer></script>
+  ${process.env.NODE_ENV === 'development' ? '<script src="/static/frontend-dev-reload.js" defer></script>' : ''}
 </head>
 <body class='h-full bg-base-light-500/10 text-base-dark dark:bg-base-dark dark:text-base-light${classes ? ` ${classes}`: ''} transition-colors duration-150'>
 ${children?.join('')}
