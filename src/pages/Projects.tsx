@@ -24,6 +24,8 @@ export default ({ lang }: { lang: Locale }) => (
             {t(lang, 'projects.item1Mid6')}<Highlight>{t(lang, 'projects.item1KbHighlight')}</Highlight>{t(lang, 'projects.item1Mid7')}
             <br/>
             {t(lang, 'projects.item1Mid8')}<Highlight>{t(lang, 'projects.item1JsxHighlight')}</Highlight>{t(lang, 'projects.item1Mid9')}
+            <br/><br/>
+            {t(lang, 'projects.item1InfraPre')}<Highlight>{t(lang, 'projects.item1InfraHighlight')}</Highlight>{t(lang, 'projects.item1InfraMid')}<Highlight>{t(lang, 'projects.item1InfraLowHighlight')}</Highlight>{t(lang, 'projects.item1InfraPost')}
           </div>
           <div class='grid grid-cols-1 md:grid-cols-2 gap-4 w-full mt-5'>
             <figure class='flex flex-col items-center'>

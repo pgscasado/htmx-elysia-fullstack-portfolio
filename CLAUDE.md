@@ -3,7 +3,7 @@
 Pedro Casado's personal portfolio. It's also a deliberate showoff piece: server-rendered
 HTML with a JSX-like DX, but without shipping a frontend framework. Keep that constraint
 in mind for every change — the pitch (see `src/pages/Projects.tsx`, project #1) is "you get
-JSX ergonomics, but the JS payload is just HTMX's ~50KB, not a multi-megabyte bundle."
+JSX ergonomics, but the JS payload is just HTMX's ~17KB gzipped, not a multi-megabyte bundle."
 
 ## Stack
 
