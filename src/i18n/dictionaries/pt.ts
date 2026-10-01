@@ -141,7 +141,7 @@ export const pt = {
     item1InfraHighlight: 'CI/CD automatizado e seguro',
     item1InfraMid: ' (um webhook com assinatura verificada baixa, instala e reinicia a aplicação sozinho), e tudo isso roda com ',
     item1InfraLowHighlight: 'pouquíssimo poder computacional',
-    item1InfraPost: ': um VPS de 2 vCPUs, onde o servidor usa cerca de 80 megabytes de RAM.',
+    item1InfraPost: '.',
     item1CodeRenderAlt: 'Código de src/core/render.ts: a função render, usada como fábrica de JSX, cria o elemento com typed-html e minifica o HTML',
     item1CodeRenderCaption: 'A fábrica de JSX: cada componente vira uma chamada a essa função e sai como HTML minificado, sem React',
     item1CodeNavAlt: 'Código do componente NavItem em src/components/Navbar.tsx: um link JSX com os atributos hx-get, hx-swap, hx-target e hx-push-url',

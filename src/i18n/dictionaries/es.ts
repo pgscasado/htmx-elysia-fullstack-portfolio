@@ -143,7 +143,7 @@ export const es: Dictionary = {
     item1InfraHighlight: 'CI/CD automatizado y seguro',
     item1InfraMid: ' (un webhook con firma verificada descarga, instala y reinicia la aplicación por sí solo), y todo esto corre con ',
     item1InfraLowHighlight: 'poquísimo poder de cómputo',
-    item1InfraPost: ': un VPS de 2 vCPU, donde el servidor usa alrededor de 80 megabytes de RAM.',
+    item1InfraPost: '.',
     item1CodeRenderAlt: 'Código de src/core/render.ts: la función render, usada como fábrica de JSX, crea el elemento con typed-html y minifica el HTML',
     item1CodeRenderCaption: 'La fábrica de JSX: cada componente se convierte en una llamada a esta función y sale como HTML minificado, sin React',
     item1CodeNavAlt: 'Código del componente NavItem en src/components/Navbar.tsx: un enlace JSX con los atributos hx-get, hx-swap, hx-target y hx-push-url',

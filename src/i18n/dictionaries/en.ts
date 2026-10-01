@@ -143,7 +143,7 @@ export const en: Dictionary = {
     item1InfraHighlight: 'automated and secure CI/CD',
     item1InfraMid: ' pipeline (a signature-verified webhook pulls, installs and restarts the app on its own), and all of this runs on ',
     item1InfraLowHighlight: 'extremely low computing power',
-    item1InfraPost: ': a 2-vCPU VPS, where the server uses around 80 megabytes of RAM.',
+    item1InfraPost: '.',
     item1CodeRenderAlt: 'Code from src/core/render.ts: the render function, used as the JSX factory, creates the element with typed-html and minifies the HTML',
     item1CodeRenderCaption: 'The JSX factory: every component compiles to a call to this function and comes out as minified HTML, no React',
     item1CodeNavAlt: 'Code of the NavItem component in src/components/Navbar.tsx: a JSX link with the hx-get, hx-swap, hx-target and hx-push-url attributes',
