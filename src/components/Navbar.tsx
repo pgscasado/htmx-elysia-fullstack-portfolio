@@ -11,10 +11,11 @@ const NavItem: Component<{
 }> = (props) => {
   const href = localePath(props.lang, props.id);
   return (
-    <li class='py-3 px-1.5 min-[360px]:px-2 sm:px-3 item-load' aria-selected={`${props.active}`}>
+    <li class='item-load' data-active={`${props.active}`}>
       <input class='hidden' name='active' value={`${props.id}`} />
-      <a class='cover-parent' href={props.active ? '#' : href} hx-get={href} hx-on='click' hx-swap='outerHTML' hx-target='body' hx-push-url={href} hx-vals="" hx-disable={props.active}></a>
-      {props.text}
+      {/* the text lives inside the link (it has a name) and the padding too (the whole cell is the
+          touch target); the current page keeps its real href, marked with aria-current instead */}
+      <a class={`block py-3 px-1.5 min-[360px]:px-2 sm:px-3${props.active ? ' pointer-events-none' : ''}`} href={href} {...(props.active ? { 'aria-current': 'page' } : {})} hx-get={href} hx-on='click' hx-swap='outerHTML' hx-target='body' hx-push-url={href} hx-vals="" hx-disable={props.active}>{props.text}</a>
     </li>
   )
 }

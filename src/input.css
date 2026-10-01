@@ -64,6 +64,12 @@
   }
   /* --- */
 
+  /* Links inside text: underlined, not just green, so they don't rely on color alone */
+  .text-link {
+    @apply text-interactive hover:text-interactive-300 transition-colors;
+    @apply underline decoration-interactive/40 hover:decoration-interactive-300 underline-offset-[3px];
+  }
+
   /* Blurred placeholder (LQIP) while an image/video loads - see components/Img.tsx */
   /* --- */
   .lqip {
@@ -117,29 +123,17 @@
   /* Navbar transitions */
   /* --- */
   nav.htmx-added * li.item-load {
-    @apply aria-selected:text-black;
+    @apply data-[active=true]:text-black;
   }
-  
+
   nav.htmx-swapping * li.item-load {
-    @apply aria-selected:text-black;
+    @apply data-[active=true]:text-black;
   }
-  
+
   nav * li.item-load {
-    @apply dark:aria-selected:text-primary aria-selected:text-secondary;
+    @apply dark:data-[active=true]:text-primary data-[active=true]:text-secondary;
     @apply hover:bg-base-dark-900/10 duration-150 transition-colors;
   }
-  
-  *:has(a.cover-parent) {
-    position: relative;
-  }
-  
-  a.cover-parent {
-    @apply absolute;
-    @apply top-0;
-    @apply left-0;
-    @apply right-0;
-    @apply bottom-0;
-  }
-  
+
   /* --- */
 }

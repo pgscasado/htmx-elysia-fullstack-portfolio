@@ -20,7 +20,7 @@ export default ({ lang }: { lang: Locale }) => (
           <div class='text-base text-justify w-full'>
             {t(lang, 'contact.linkedinDesc')}
             <br/>
-            <a href={contact.linkedin.href} target='about:blank' class='text-interactive hover:text-interactive-300'>{contact.linkedin.href.replace('https://', '')}</a>
+            <a href={contact.linkedin.href} target='about:blank' class='text-link'>{contact.linkedin.href.replace('https://', '')}</a>
           </div>
         </div>
         <div class='flex flex-col items-center'>
@@ -28,7 +28,7 @@ export default ({ lang }: { lang: Locale }) => (
           <div class='text-base text-justify w-full'>
             {t(lang, 'contact.emailDesc')}
             <br/>
-            <a href={contact.email.href} target='about:blank' class='text-interactive hover:text-interactive-300'>{contact.email.label}</a>
+            <a href={contact.email.href} target='about:blank' class='text-link'>{contact.email.label}</a>
           </div>
         </div>
         <div class='flex flex-col items-center'>
@@ -36,7 +36,7 @@ export default ({ lang }: { lang: Locale }) => (
           <div class='text-base text-justify w-full'>
             {t(lang, 'contact.phoneDesc')}
             <br/>
-            <a href={contact.whatsapp.href} target='about:blank' class='text-interactive hover:text-interactive-300'>{contact.whatsapp.label}</a>
+            <a href={contact.whatsapp.href} target='about:blank' class='text-link'>{contact.whatsapp.label}</a>
           </div>
         </div>
         <div class='flex flex-col items-center'>
@@ -44,7 +44,7 @@ export default ({ lang }: { lang: Locale }) => (
           <div class='text-base text-justify w-full'>
             {t(lang, 'contact.discordDesc')}
             <br/>
-            <a href={contact.discord.href} target='about:blank' class='text-interactive hover:text-interactive-300'>{contact.discord.label}</a>
+            <a href={contact.discord.href} target='about:blank' class='text-link'>{contact.discord.label}</a>
           </div>
         </div>
       </div>

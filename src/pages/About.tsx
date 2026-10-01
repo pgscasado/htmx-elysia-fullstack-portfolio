@@ -45,7 +45,7 @@ export default ({ lang }: { lang: Locale }) => {
           </div>
           <div class='text-base text-justify space-y-2'>
             <p>
-              {t(lang, 'about.p2Pre')}<Highlight><a hx-boost='true' class='text-interactive hover:text-interactive-300 transition-colors' href={localePath(lang, 'projects')}>{t(lang, 'about.p2ProjectsLabel')}</a></Highlight>{t(lang, 'about.p2Post')}
+              {t(lang, 'about.p2Pre')}<Highlight><a hx-boost='true' class='text-link' href={localePath(lang, 'projects')}>{t(lang, 'about.p2ProjectsLabel')}</a></Highlight>{t(lang, 'about.p2Post')}
             </p>
             <p>
               {t(lang, 'about.p3Pre')}<Highlight>{t(lang, 'about.p3English')}</Highlight>{t(lang, 'about.p3Mid1')}<Highlight>{t(lang, 'about.p3Spanish')}</Highlight>{t(lang, 'about.p3Mid2')}<Highlight>{t(lang, 'about.p3German')}</Highlight>{t(lang, 'about.p3Mid3')}<Highlight>{t(lang, 'about.p3Japanese')}</Highlight>{t(lang, 'about.p3Post')}
