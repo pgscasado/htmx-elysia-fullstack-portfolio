@@ -2,61 +2,57 @@ import render from '@core/render';
 import { Navbar } from '@components';
 import { Base } from '@pages';
 import { Footer } from '@components/Footer';
-import { Highlight } from '@components/Highlight';
-import { t, localePath, type Locale } from '@i18n';
+import { Icon } from '@components/Icon';
+import { t, type Key, type Locale } from '@i18n';
+
+// newest first; the research years close the timeline
+const jobs = ['shk', 'vinta', 'teddy', 'elife', 'ifpb'];
+const languages = ['pt', 'en', 'es', 'de', 'ja'];
 
 export default ({ lang }: { lang: Locale }) => {
   const years = new Date().getFullYear() - 2020;
+  const job = (id: string, field: string) => t(lang, `about.jobs.${id}.${field}` as Key);
+  const language = (id: string, field: string) => t(lang, `about.languages.${id}.${field}` as Key);
   return (
-    <Base lang={lang} page='about' class='flex flex-col md:h-[90vh]'>
-      <div>
-        <Navbar lang={lang} active='about'/>
-        <div class='flex space-y-10 flex-col mx-auto container w-[90vw] md:w-[70vw] mb-[4.5rem]'>
-          <div class='text-3xl mb-2 md:mb-0 md:w-[25%]'>{t(lang, 'about.titlePre')}<Highlight class='font-medium'>{t(lang, 'about.titleHighlight')}</Highlight></div>
-          <div class='text-base text-justify space-y-2'>
-            <p>
-              {t(lang, 'about.p1IntroPre')}<Highlight>{t(lang, 'about.p1FieldsHighlightPre')}<span class='font-medium'>{t(lang, 'about.p1FieldsBold')}</span></Highlight>{t(lang, 'about.p1Mid1')}<Highlight>{t(lang, 'about.p1AngularHighlight')}</Highlight>{t(lang, 'about.p1Mid2')}<Highlight>{t(lang, 'about.p1RoleHighlight')}</Highlight>{t(lang, 'about.p1Mid3')}<Highlight class='font-medium'>{t(lang, 'about.p1CompanyHighlight')}</Highlight>{t(lang, 'about.p1Mid4')}<Highlight>{t(lang, 'about.p1SkillsHighlight')}</Highlight>{t(lang, 'about.p1Mid5')}<Highlight>{t(lang, 'about.p1YearsHighlight').replace('{years}', String(years))}</Highlight>{t(lang, 'about.p1Mid6')}<Highlight>{t(lang, 'about.p1DomainsHighlight')}</Highlight>{t(lang, 'about.p1Mid7')}
-            </p>
-          </div>
-          <div class='flex flex-col items-center'>
-            <div class='text-3xl mb-2'><Highlight class='font-medium'>{t(lang, 'about.workTitle')}</Highlight></div>
-            <div class='flex flex-col space-y-4 w-full text-base text-justify'>
-              <div class='flex flex-col'>
-                <div class='text-xl'><Highlight class='font-medium'>{t(lang, 'about.workJob1Company')}</Highlight> — {t(lang, 'about.workJob1Role')}</div>
-                <div class='text-sm italic opacity-70'>{t(lang, 'about.workJob1Location')} · {t(lang, 'about.workJob1Dates')}</div>
-                <div>{t(lang, 'about.workJob1Summary')}</div>
-              </div>
-              <div class='flex flex-col'>
-                <div class='text-xl'><Highlight class='font-medium'>{t(lang, 'about.workJob2Company')}</Highlight> — {t(lang, 'about.workJob2Role')}</div>
-                <div class='text-sm italic opacity-70'>{t(lang, 'about.workJob2Location')} · {t(lang, 'about.workJob2Dates')}</div>
-                <div>{t(lang, 'about.workJob2Summary')}</div>
-              </div>
-              <div class='flex flex-col'>
-                <div class='text-xl'><Highlight class='font-medium'>{t(lang, 'about.workJob3Company')}</Highlight> — {t(lang, 'about.workJob3Role')}</div>
-                <div class='text-sm italic opacity-70'>{t(lang, 'about.workJob3Location')} · {t(lang, 'about.workJob3Dates')}</div>
-                <div>{t(lang, 'about.workJob3Summary')}</div>
-              </div>
-              <div class='flex flex-col'>
-                <div class='text-xl'><Highlight class='font-medium'>{t(lang, 'about.workJob4Company')}</Highlight> — {t(lang, 'about.workJob4Role')}</div>
-                <div class='text-sm italic opacity-70'>{t(lang, 'about.workJob4Location')} · {t(lang, 'about.workJob4Dates')}</div>
-                <div>{t(lang, 'about.workJob4Summary')}</div>
-              </div>
-            </div>
-          </div>
-          <div class='text-base text-justify space-y-2'>
-            <p>
-              {t(lang, 'about.p2Pre')}<Highlight><a hx-boost='true' class='text-link' href={localePath(lang, 'projects')}>{t(lang, 'about.p2ProjectsLabel')}</a></Highlight>{t(lang, 'about.p2Post')}
-            </p>
-            <p>
-              {t(lang, 'about.p3Pre')}<Highlight>{t(lang, 'about.p3English')}</Highlight>{t(lang, 'about.p3Mid1')}<Highlight>{t(lang, 'about.p3Spanish')}</Highlight>{t(lang, 'about.p3Mid2')}<Highlight>{t(lang, 'about.p3German')}</Highlight>{t(lang, 'about.p3Mid3')}<Highlight>{t(lang, 'about.p3Japanese')}</Highlight>{t(lang, 'about.p3Post')}
-            </p>
-            <p>
-              {t(lang, 'about.p4Pre')}<Highlight>{t(lang, 'about.p4Gandalf')}</Highlight>{t(lang, 'about.p4Mid')}<Highlight>{t(lang, 'about.p4Leia')}</Highlight>{t(lang, 'about.p4Post')}
-            </p>
-          </div>
-        </div>
-      </div>
-      <Footer lang={lang} class='mt-auto' currentPage='about'/>
+    <Base lang={lang} page='about' class='flex flex-col min-h-[100svh]'>
+      <Navbar lang={lang} active='about'/>
+      <main class='flex-1 mx-auto w-[90vw] md:w-[70vw] pt-[6vh] pb-24 flex flex-col gap-20'>
+        <h1 class='sr-only'>{t(lang, 'about.title')}</h1>
+        <p class='max-w-[30ch] font-roboto-serif font-light leading-snug text-[clamp(1.75rem,4.5vw,3rem)] text-secondary dark:text-primary'>
+          {t(lang, 'about.lead').replace('{years}', String(years))}
+        </p>
+        <section>
+          <h2 class='mb-4 opacity-60'>{t(lang, 'about.workTitle')}</h2>
+          {/* each job opens to its summary; dates sit in their own column from md up */}
+          <ol>
+            {jobs.map((id) => (
+              <li>
+                <details class='disclosure'>
+                  <summary class='grid grid-cols-[1fr_auto] md:grid-cols-[11rem_1fr_auto] gap-x-6 gap-y-1 py-4 items-baseline'>
+                    <span class='col-span-2 md:col-span-1 text-sm opacity-60 tabular-nums'>{job(id, 'dates')}</span>
+                    <span>
+                      <span class='text-xl'>{job(id, 'company')}</span>
+                      <span class='block md:inline md:ml-3 opacity-70'>{job(id, 'role')}</span>
+                    </span>
+                    <Icon name='chevron-down' class='chevron'/>
+                  </summary>
+                  <p class='max-w-prose pb-6 md:ml-[12.5rem] opacity-90'>{job(id, 'summary')}</p>
+                </details>
+              </li>
+            )).join('')}
+          </ol>
+        </section>
+        <section>
+          <h2 class='mb-4 opacity-60'>{t(lang, 'about.languagesTitle')}</h2>
+          <ul class='flex flex-wrap gap-x-10 gap-y-3'>
+            {languages.map((id) => (
+              <li><span class='text-xl'>{language(id, 'name')}</span> <span class='text-sm opacity-60'>{language(id, 'level')}</span></li>
+            )).join('')}
+          </ul>
+        </section>
+        <p class='max-w-prose opacity-80'>{t(lang, 'about.personal')}</p>
+      </main>
+      <Footer lang={lang} currentPage='about'/>
     </Base>
   );
 }

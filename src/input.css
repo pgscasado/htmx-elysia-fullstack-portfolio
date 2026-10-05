@@ -10,6 +10,19 @@
     --color-secondary: 211 111 173;     /* #EB7BC0 x 0.9 */
     --color-interactive: 124 181 34;    /* #8AC926 x 0.9 */
     --color-interactive-600: 90 137 22; /* #649818 x 0.9 */
+
+    /* motion tokens: every interaction shares these instead of picking its own timing */
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    --dur-quick: 150ms;
+    --dur-color: 250ms;
+    --dur-reveal: 700ms;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    :root {
+      --dur-quick: 0ms;
+      --dur-color: 0ms;
+      --dur-reveal: 0ms;
+    }
   }
   :root.dark {
     --color-secondary: 235 123 192;
@@ -69,6 +82,102 @@
     @apply text-interactive hover:text-interactive-300 transition-colors;
     @apply underline decoration-interactive/40 hover:decoration-interactive-300 underline-offset-[3px];
   }
+
+  /* Icon row (components/IconRow.tsx): icons sharing one caption line. With a mouse, hovering or
+     focusing one shows its caption below the row and fades the others. Without hover (touch),
+     every caption is visible: a list, or a grid with .compact. CSS only. */
+  /* --- */
+  .icon-row {
+    @apply flex flex-col gap-5;
+  }
+  .icon-row > li > * {
+    @apply inline-flex items-center gap-4;
+    transition: opacity var(--dur-color) var(--ease-out);
+  }
+  .icon-row i {
+    transition: color var(--dur-color) var(--ease-out);
+  }
+  .icon-row .caption {
+    @apply text-base opacity-60;
+  }
+  .icon-row.compact {
+    @apply grid grid-cols-4 gap-x-4 gap-y-5;
+  }
+  .icon-row.compact > li > * {
+    @apply flex flex-col gap-1 text-center;
+  }
+  .icon-row.compact .caption {
+    @apply text-xs;
+  }
+  /* the active one (e.g. the project filter) stays lit */
+  .icon-row [aria-current] i {
+    color: rgb(var(--color-interactive-600));
+  }
+  .dark .icon-row [aria-current] i {
+    color: rgb(var(--color-interactive));
+  }
+  @media (hover: hover) and (pointer: fine) {
+    /* both selectors, so .compact's grid doesn't outrank the mouse layout */
+    .icon-row, .icon-row.compact {
+      @apply relative flex flex-row flex-wrap gap-x-8 gap-y-4 pb-10;
+    }
+    .icon-row > li > *, .icon-row.compact > li > * {
+      @apply flex-row;
+    }
+    .icon-row .caption, .icon-row.compact .caption {
+      @apply absolute left-0 bottom-0 text-base whitespace-nowrap opacity-0 pointer-events-none;
+      transition: opacity var(--dur-color) var(--ease-out);
+    }
+    .icon-row > li > :is(:hover, :focus-visible) .caption {
+      @apply opacity-70;
+    }
+    .icon-row:not(:has(> li > :is(:hover, :focus-visible))) [aria-current] .caption {
+      @apply opacity-70;
+    }
+    /* written out: Tailwind's dark: variant breaks on an :is() selector. Only links turn
+       green; plain icons (the stacks) just get their caption */
+    .icon-row > li > a:is(:hover, :focus-visible) i {
+      color: rgb(var(--color-interactive-600));
+    }
+    .dark .icon-row > li > a:is(:hover, :focus-visible) i {
+      color: rgb(var(--color-interactive));
+    }
+    .icon-row:has(> li > :is(:hover, :focus-visible)) > li > :not(:hover, :focus-visible) {
+      @apply opacity-[.35];
+    }
+  }
+  /* --- */
+
+  /* Disclosure: a <details> row (about timeline, projects) with a chevron that turns when open */
+  /* --- */
+  .disclosure > summary {
+    @apply cursor-pointer list-none;
+  }
+  .disclosure > summary::-webkit-details-marker {
+    display: none;
+  }
+  .disclosure .chevron {
+    @apply opacity-60;
+    transition: transform var(--dur-color) var(--ease-out), color var(--dur-color) var(--ease-out), opacity var(--dur-color) var(--ease-out);
+  }
+  .disclosure[open] > summary .chevron {
+    @apply rotate-180;
+  }
+  .disclosure > summary:is(:hover, :focus-visible) .chevron {
+    @apply opacity-100;
+    color: rgb(var(--color-interactive-600));
+  }
+  .dark .disclosure > summary:is(:hover, :focus-visible) .chevron {
+    color: rgb(var(--color-interactive));
+  }
+  /* project details fetched by htmx fade in: htmx-added is on the new element for one settle */
+  .project-details {
+    transition: opacity var(--dur-reveal) var(--ease-out);
+  }
+  .project-details.htmx-added {
+    @apply opacity-0;
+  }
+  /* --- */
 
   /* Blurred placeholder (LQIP) while an image/video loads - see components/Img.tsx */
   /* --- */
@@ -132,7 +241,7 @@
 
   nav * li.item-load {
     @apply dark:data-[active=true]:text-primary data-[active=true]:text-secondary;
-    @apply hover:bg-base-dark-900/10 duration-150 transition-colors;
+    @apply hover:bg-base-dark-900/10 transition-colors;
   }
 
   /* --- */

@@ -26,10 +26,10 @@ export const Navbar: Component<{
 }> = (props) => (
   <>
     <nav class='w-full mb-12 flex justify-between text-sm sm:text-base'>
-      <a class='py-3 px-1.5 min-[360px]:px-2 sm:px-3 whitespace-nowrap hover:bg-base-dark-900/10 duration-150' href={localePath(props.lang)} hx-boost='true'><span class='sm:hidden'>Pedro</span><span class='hidden sm:inline'>Pedro Casado</span></a>
+      <a class='py-3 px-1.5 min-[360px]:px-2 sm:px-3 whitespace-nowrap hover:bg-base-dark-900/10 transition-colors' href={localePath(props.lang)} hx-boost='true'><span class='sm:hidden'>Pedro</span><span class='hidden sm:inline'>Pedro Casado</span></a>
       <ul class='flex'>
         <li class='flex'>
-          <button type='button' id='theme-selector' aria-label={t(props.lang, 'nav.themeToggle')} class='py-3 px-1.5 min-[360px]:px-2 sm:px-3 hover:bg-base-dark-900/10 duration-150'>
+          <button type='button' id='theme-selector' aria-label={t(props.lang, 'nav.themeToggle')} class='py-3 px-1.5 min-[360px]:px-2 sm:px-3 hover:bg-base-dark-900/10 transition-colors'>
             <span class='relative inline-block w-[1em] h-[1em] align-[-0.125em]'>
               <Icon name='moon' class='absolute inset-0 m-auto transition-opacity duration-300 dark:opacity-0'/>
               <Icon name='sun' class='absolute inset-0 m-auto transition-opacity duration-300 opacity-0 dark:opacity-100'/>

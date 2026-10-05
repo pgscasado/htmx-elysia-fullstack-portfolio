@@ -1,7 +1,9 @@
 import render from '@core/render';
 import { Base } from '@pages';
 import { Navbar } from '@components/Navbar';
-import { IconStack } from '@components/IconStack';
+import { IconRow } from '@components/IconRow';
+import techs from '@components/util/techs';
+import { techName, type Tech } from '@components/util/projects';
 import { Highlight } from '@components/Highlight';
 import { Icon } from '@components/Icon';
 import { BinaryWatermark } from '@components/BinaryWatermark';
@@ -11,7 +13,10 @@ import brands from '@components/util/brands';
 import { t, localePath, type Locale } from '@i18n';
 
 export default ({ lang }: { lang: Locale }) => {
-  const years = new Date().getFullYear() - 2020;
+  const stacks: [string, Tech[]][] = [
+    ['Back-end', ['nestjs', 'typescript', 'denojs', 'docker', 'postgresql', 'mongodb', 'redis', 'amazonwebservices']],
+    ['Front-end', ['html5', 'css3', 'typescript', 'react', 'nextjs', 'angularjs', 'tailwindcss', 'googlecloud']],
+  ];
   return (
     <Base lang={lang} page='' class='flex flex-col'>
       <section class='relative isolate overflow-hidden min-h-[100svh] flex flex-col'>
@@ -49,8 +54,15 @@ export default ({ lang }: { lang: Locale }) => {
           <Icon name='chevron-down'/>
         </a>
       </section>
-      <main id='content' class='flex space-y-10 flex-col mx-auto container w-[90vw] md:w-[70vw] pt-16 mb-[4.5rem]'>
-        <div class='flex justify-center'>
+      <main id='content' class='mx-auto w-[90vw] md:w-[70vw] pt-24 pb-24 flex flex-col gap-14'>
+        <h2 class='sr-only'>{t(lang, 'main.stackTitle')}</h2>
+        {stacks.map(([label, icons]) => (
+          <section class='grid md:grid-cols-[9rem_1fr] gap-x-8 gap-y-4 items-start'>
+            <h3 class='opacity-60 md:pt-1'>{label}</h3>
+            <IconRow compact class='text-3xl' items={icons.map((i) => ({ icon: techs[i], caption: techName[i] ?? i }))}/>
+          </section>
+        )).join('')}
+        <div class='pt-6'>
           <a
             href={localePath(lang, 'projects')}
             hx-boost='true'
@@ -60,66 +72,8 @@ export default ({ lang }: { lang: Locale }) => {
             <Icon name='arrow-right' class='transition-transform group-hover:translate-x-1'/>
           </a>
         </div>
-        <div class='flex flex-col md:flex-row md:space-x-4 items-center'>
-          <div class='text-3xl mb-2 md:mb-0 md:w-[18%]'><Highlight class='font-medium'>{t(lang, 'main.whoTitleHighlight')}</Highlight>{t(lang, 'main.whoTitleRest')}</div>
-          <div class='text-base text-justify'>
-            {t(lang, 'main.whoIntroPre')}<Highlight>{t(lang, 'main.whoExperienceHighlight').replace('{years}', String(years))}</Highlight>{t(lang, 'main.whoIntroMid')}<Highlight>{t(lang, 'main.whoDomainsHighlight')}</Highlight>{t(lang, 'main.whoIntroPost')}
-          </div>
-        </div>
-        <div class='flex flex-col items-center'>
-          <div class='text-3xl mb-2'><Highlight class='font-medium'>{t(lang, 'main.whatTitleHighlight')}</Highlight>{t(lang, 'main.whatTitleRest')}</div>
-          <div class='text-base text-justify'>
-            {t(lang, 'main.whatP1Pre')}<Highlight>{t(lang, 'main.whatP1Highlight1')}</Highlight>{t(lang, 'main.whatP1Mid')}<Highlight>{t(lang, 'main.whatP1Highlight2')}</Highlight>{t(lang, 'main.whatP1Post')}
-            <div class='w-max mb-2'></div>
-            {t(lang, 'main.whatP2Pre')}<Highlight>{t(lang, 'main.whatP2Highlight1')}</Highlight>{t(lang, 'main.whatP2Mid1')}<Highlight>{t(lang, 'main.whatP2Highlight2')}</Highlight>{t(lang, 'main.whatP2Mid2')}<Highlight>{t(lang, 'main.whatP2Highlight3')}</Highlight>{t(lang, 'main.whatP2Mid3')}<Highlight interactive class='group  md:border-dotted md:border-b-interactive md:dark:border-b-interactive-600 md:border-b-2'>{t(lang, 'main.whatP2NlpLabel')}<span class='md:tooltip md:hidden md:group-hover:block left-align md:group-hover:opacity-100 md:max-w-[30vw] md:before:content-[""] before:content-["_"]'>{t(lang, 'main.whatP2NlpTooltip')}</span></Highlight>{t(lang, 'main.whatP2Post')}
-          </div>
-        </div>
-        <div class='flex flex-col md:flex-row md:space-x-4 items-center'>
-          <div class='text-3xl mb-2 md:w-[18%] lg:basis-1/4 md:basis-1/3 text-center md:text-left'>{t(lang, 'main.backendTitlePre')}<Highlight class='inline-block font-medium'>{t(lang, 'main.backendTitleHighlight')}</Highlight></div>
-          <div class='text-base text-justify basis-auto'>
-            {t(lang, 'main.backendDesc')}
-          </div>
-          <div class="text-xl mb-2 md:w-18 basis-1/6">
-            <Highlight>{t(lang, 'main.stackUsedHighlight')}</Highlight>{t(lang, 'main.stackUsedRest')}
-          </div>
-          <div class='grid md:justify-items-end md:basis-1/6 grid-cols-4 gap-4 md:grid-cols-2 md:gap-2 md:flex-col text-xl md:text-2xl [&>i]:duration-300 [&>i]:ease-in-out [&>i]:cursor-pointer'>
-            <IconStack
-              icons={[
-                'nestjs',
-                'typescript',
-                'denojs',
-                'docker',
-                'postgresql',
-                'mongodb',
-                'redis',
-                'amazonwebservices',
-              ]} class='hover:text-interactive'/>
-          </div>
-        </div>
-        <div class='flex flex-col md:flex-row md:space-x-4 items-center'>
-          <div class='text-3xl mb-2 lg:basis-1/2 md:basis-1/3 text-center md:text-left'>{t(lang, 'main.frontendTitlePre')}<Highlight class='inline-block font-medium'>{t(lang, 'main.frontendTitleHighlight')}</Highlight></div>
-          <div class='text-base text-justify basis-auto'>
-            {t(lang, 'main.frontendDescPre')}<Highlight interactive class='group  md:border-dotted md:border-b-interactive md:dark:border-b-interactive-600 md:border-b-2'>{t(lang, 'main.frontendDialogLabel')}<span class='md:tooltip md:hidden md:group-hover:block left-align md:group-hover:opacity-100 md:max-w-[30vw] md:before:content-[""] before:content-["_"]'>{t(lang, 'main.frontendDialogTooltipPre')}<i class='fa-solid fa-people-arrows'></i>{t(lang, 'main.frontendDialogTooltipPost')}</span></Highlight>{t(lang, 'main.frontendDescPost')}
-          </div>
-          <div class="text-xl mb-2 md:w-18 basis-1/6">
-            <Highlight>{t(lang, 'main.stackUsedHighlight')}</Highlight>{t(lang, 'main.stackUsedRest')}
-          </div>
-          <div class='grid md:  justify-items-end md:basis-1/6 grid-cols-4 gap-4 md:grid-cols-2 md:gap-2 md:flex-col text-xl md:text-2xl [&>i]:duration-300 [&>i]:ease-in-out [&>i]:cursor-pointer'>
-            <IconStack
-              icons={[
-                'html5',
-                'css3',
-                'typescript',
-                'react',
-                'nextjs',
-                'angularjs',
-                'tailwindcss',
-                'googlecloud',
-              ]} class='hover:text-interactive'/>
-          </div>
-        </div>
       </main>
-      <Footer lang={lang} class='mt-auto'/>
+      <Footer lang={lang}/>
     </Base>
   );
 };

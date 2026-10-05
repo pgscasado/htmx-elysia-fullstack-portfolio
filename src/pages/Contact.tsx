@@ -2,53 +2,31 @@ import render from '@core/render';
 import { Navbar } from '@components/Navbar';
 import { Base } from '@pages';
 import { Footer } from '@components/Footer';
-import { Highlight } from '@components/Highlight';
-import { contact } from '@components/util/contacts';
+import { IconRow } from '@components/IconRow';
+import brands from '@components/util/brands';
+import { contact, contacts } from '@components/util/contacts';
 import { t, type Locale } from '@i18n';
 
-export default ({ lang }: { lang: Locale }) => (
-  <Base lang={lang} page='contact' class='flex flex-col md:h-[90vh]'>
-    <Navbar lang={lang} active='contact'/>
-    <div class='flex space-y-10 flex-col mx-auto container w-[90vw] md:w-[70vw] mb-[4.5rem]'>
-      <div class='text-3xl mb-2 md:mb-0 md:w-max'>{t(lang, 'contact.titlePre')}<Highlight class='font-medium'>{t(lang, 'contact.titleHighlight')}</Highlight></div>
-      <div class='text-base text-justify space-y-2'>
-        <p>
-          {t(lang, 'contact.introPre')}<Highlight>{t(lang, 'contact.introHighlight1')}</Highlight>{t(lang, 'contact.introMid1')}<Highlight>{t(lang, 'contact.introHighlight2')}</Highlight>{t(lang, 'contact.introMid2')}<Highlight>{t(lang, 'contact.introHighlight3')}</Highlight>{t(lang, 'contact.introPost')}
-        </p>
-        <div class='flex flex-col items-center'>
-          <div class='text-3xl mb-2'><Highlight class='font-medium'><i class='text-blue-500 fi fi-brands-linkedin text-sm align-middle'></i> {t(lang, 'contact.linkedinTitle')}</Highlight></div>
-          <div class='text-base text-justify w-full'>
-            {t(lang, 'contact.linkedinDesc')}
-            <br/>
-            <a href={contact.linkedin.href} target='about:blank' class='text-link'>{contact.linkedin.href.replace('https://', '')}</a>
-          </div>
-        </div>
-        <div class='flex flex-col items-center'>
-          <div class='text-3xl mb-2'><Highlight class='font-medium'><i class='text-red-500 fi fi-brands-google text-sm align-middle'></i> {t(lang, 'contact.emailTitle')}</Highlight></div>
-          <div class='text-base text-justify w-full'>
-            {t(lang, 'contact.emailDesc')}
-            <br/>
-            <a href={contact.email.href} target='about:blank' class='text-link'>{contact.email.label}</a>
-          </div>
-        </div>
-        <div class='flex flex-col items-center'>
-          <div class='text-3xl mb-2'><Highlight class='font-medium'><i class='text-green-500 fi fi-brands-whatsapp text-sm align-middle'></i> {t(lang, 'contact.phoneTitle')}</Highlight></div>
-          <div class='text-base text-justify w-full'>
-            {t(lang, 'contact.phoneDesc')}
-            <br/>
-            <a href={contact.whatsapp.href} target='about:blank' class='text-link'>{contact.whatsapp.label}</a>
-          </div>
-        </div>
-        <div class='flex flex-col items-center'>
-          <div class='text-3xl mb-2'><Highlight class='font-medium'><i class='text-slate-500 fi fi-brands-discord text-sm align-middle'></i> {t(lang, 'contact.discordTitle')}</Highlight></div>
-          <div class='text-base text-justify w-full'>
-            {t(lang, 'contact.discordDesc')}
-            <br/>
-            <a href={contact.discord.href} target='about:blank' class='text-link'>{contact.discord.label}</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <Footer lang={lang} class='mt-auto' currentPage='contact'/>
-  </Base>
-)
+// One dominant element (the email, which is the channel to prefer) and the rest as a quiet icon
+// row. No copy: the channels explain themselves. Hover/caption behavior lives in `.icon-row`
+// (input.css), CSS only.
+export default ({ lang }: { lang: Locale }) => {
+  const [user, domain] = contact.email.label.split('@');
+  return (
+    <Base lang={lang} page='contact' class='flex flex-col min-h-[100svh]'>
+      <Navbar lang={lang} active='contact'/>
+      <main class='flex-1 flex flex-col justify-center mx-auto container w-[90vw] md:w-[70vw] pb-[12vh]'>
+        <h1 class='sr-only'>{t(lang, 'nav.contact')}</h1>
+        {/* the break opportunity sits before the @, so a narrow screen wraps to user / @domain */}
+        <a
+          href={contact.email.href}
+          class='motion-safe:animate-reveal w-fit font-roboto-serif font-light leading-tight text-[clamp(2rem,8vw,3.75rem)] text-secondary dark:text-primary hover:text-interactive-600 dark:hover:text-interactive transition-colors'
+        >{user}<wbr/>{`@${domain}`}</a>
+        <IconRow class='mt-12 md:mt-16 text-3xl' items={contacts.filter((c) => c !== contact.email).map((c) => ({
+          icon: brands[c.icon], caption: c.label, srPrefix: c.name, href: c.href, external: c.external,
+        }))}/>
+      </main>
+      <Footer lang={lang} currentPage='contact'/>
+    </Base>
+  )
+}
