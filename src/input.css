@@ -203,6 +203,35 @@
   .tech-chip[aria-current] i {
     @apply opacity-100;
   }
+  /* phones fold the filter after a few chips; the last chip is a checkbox label that unfolds it */
+  .tech-filter .more .tech-chip {
+    @apply cursor-pointer border-dashed opacity-80;
+  }
+  /* the checkbox is visually hidden, so its label shows the focus. Dark written out: Tailwind's
+     dark: variant breaks on a :has() selector */
+  .tech-filter .more .tech-chip:has(:focus-visible) {
+    @apply outline outline-2 outline-offset-2 outline-interactive-600;
+  }
+  .dark .tech-filter .more .tech-chip:has(:focus-visible) {
+    @apply outline-interactive;
+  }
+  .tech-filter .when-unfolded,
+  .tech-filter:has(.more :checked) .when-folded {
+    @apply hidden;
+  }
+  .tech-filter:has(.more :checked) .when-unfolded {
+    @apply inline;
+  }
+  @media (max-width: 767px) {
+    .tech-filter:not(:has(.more :checked)) > .extra {
+      @apply hidden;
+    }
+  }
+  @media (min-width: 768px) {
+    .tech-filter > .more {
+      @apply hidden;
+    }
+  }
   .tech-tag {
     @apply inline-flex items-center gap-1.5 rounded-full bg-black/5 dark:bg-white/[.07] px-2.5 py-0.5 text-xs;
     transition: color var(--dur-color) var(--ease-out), background-color var(--dur-color) var(--ease-out);

@@ -69,6 +69,8 @@ export const pt = {
     title: 'Projetos',
     filterLabel: 'Filtrar por tecnologia',
     filterAll: 'Todas',
+    showAllTechs: '+{n} tecnologias',
+    showFewerTechs: 'Mostrar menos',
     noProjects: 'Nenhum projeto público desta lista usa {tech} ainda.',
     workTitle: '{tech} no trabalho',
     openDetails: 'Ver detalhes',

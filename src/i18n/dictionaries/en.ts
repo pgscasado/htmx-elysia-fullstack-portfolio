@@ -71,6 +71,8 @@ export const en: Dictionary = {
     title: 'Projects',
     filterLabel: 'Filter by technology',
     filterAll: 'All',
+    showAllTechs: '+{n} more',
+    showFewerTechs: 'Show fewer',
     noProjects: 'No public project on this list uses {tech} yet.',
     workTitle: '{tech} at work',
     openDetails: 'See details',

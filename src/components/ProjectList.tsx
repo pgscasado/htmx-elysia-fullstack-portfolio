@@ -89,14 +89,17 @@ const ProjectRow: Component<{ lang: Locale, project: Project, open: boolean, tec
 // The tech filter and the list. Filtering asks the server for this fragment again with
 // ?tech=..., so it works the same without JS (plain links) and keeps the URL shareable. A filter
 // also lists the jobs that used the tech, so work-only stack (React, Nest...) isn't a dead end.
+// how many tech chips a phone shows before "show all"
+const FOLDED_AFTER = 13;
+
 export const ProjectList: Component<{ lang: Locale, tech?: Tech, open?: string }> = ({ lang, tech, open }) => {
   const base = projectsPath(lang);
   const visible = tech ? projects.filter((p) => p.stack.includes(tech)) : projects;
   const work = tech ? jobs.filter((j) => j.stack.includes(tech)) : [];
   const name = tech ? techName[tech] ?? tech : '';
   const job = (id: string, field: string) => t(lang, `about.jobs.${id}.${field}` as Key);
-  const chip = (href: string, current: boolean, id: string, label: string, icon?: string) => (
-    <li>
+  const chip = (href: string, current: boolean, id: string, label: string, icon?: string, extra?: boolean) => (
+    <li class={extra ? 'extra' : ''}>
       <a
         href={href}
         class='tech-chip'
@@ -112,10 +115,21 @@ export const ProjectList: Component<{ lang: Locale, tech?: Tech, open?: string }
   return (
     <div id='project-list'>
       <nav aria-label={t(lang, 'projects.filterLabel')}>
-        {/* the active filter links back to the full list, so clicking it again clears it */}
-        <ul class='flex flex-wrap gap-2'>
+        {/* the active filter links back to the full list, so clicking it again clears it. On
+            phones only the first FOLDED_AFTER techs show until the last chip, a CSS-only checkbox, unfolds the rest
+            (.tech-filter in input.css); the active one always shows */}
+        <ul class='tech-filter flex flex-wrap gap-2'>
           {chip(base, !tech, 'all', t(lang, 'projects.filterAll'))}
-          {projectTechs.map((s) => chip(s === tech ? base : `${base}?tech=${s}`, s === tech, s, techName[s] ?? s, techs[s])).join('')}
+          {projectTechs.map((s, i) => chip(s === tech ? base : `${base}?tech=${s}`, s === tech, s, techName[s] ?? s, techs[s], i >= FOLDED_AFTER && s !== tech)).join('')}
+          {projectTechs.length > FOLDED_AFTER
+            ? <li class='more'>
+                <label class='tech-chip'>
+                  <input type='checkbox' class='sr-only'/>
+                  <span class='when-folded'>{t(lang, 'projects.showAllTechs').replace('{n}', String(projectTechs.length - FOLDED_AFTER))}</span>
+                  <span class='when-unfolded'>{t(lang, 'projects.showFewerTechs')}</span>
+                </label>
+              </li>
+            : ''}
         </ul>
       </nav>
       <div class='results'>
