@@ -16,12 +16,14 @@
     --dur-quick: 150ms;
     --dur-color: 250ms;
     --dur-reveal: 700ms;
+    --dur-disclosure: 400ms;
   }
   @media (prefers-reduced-motion: reduce) {
     :root {
       --dur-quick: 0ms;
       --dur-color: 0ms;
       --dur-reveal: 0ms;
+      --dur-disclosure: 0ms;
     }
   }
   :root.dark {
@@ -179,6 +181,109 @@
   }
   /* --- */
 
+  /* Tech chips (the projects filter) and tags (stack pills on project rows and jobs) */
+  /* --- */
+  .tech-chip {
+    @apply inline-flex items-center gap-2 rounded-full border border-black/20 dark:border-white/20 px-3.5 py-1.5 text-sm;
+    transition: color var(--dur-color) var(--ease-out), border-color var(--dur-color) var(--ease-out),
+      background-color var(--dur-color) var(--ease-out), transform var(--dur-quick) var(--ease-out);
+  }
+  .tech-chip i {
+    @apply text-lg opacity-70;
+  }
+  .tech-chip:is(:hover, :focus-visible) {
+    @apply -translate-y-px border-interactive-600 text-interactive-600 dark:border-interactive dark:text-interactive;
+  }
+  .tech-chip:active {
+    @apply translate-y-0;
+  }
+  .tech-chip[aria-current] {
+    @apply border-interactive-600 bg-interactive-600 text-white dark:border-interactive dark:bg-interactive dark:text-base-dark;
+  }
+  .tech-chip[aria-current] i {
+    @apply opacity-100;
+  }
+  .tech-tag {
+    @apply inline-flex items-center gap-1.5 rounded-full bg-black/5 dark:bg-white/[.07] px-2.5 py-0.5 text-xs;
+    transition: color var(--dur-color) var(--ease-out), background-color var(--dur-color) var(--ease-out);
+  }
+  .tech-tag i {
+    @apply text-sm opacity-80;
+  }
+  .tech-tag.match {
+    @apply bg-interactive-600/10 text-interactive-600 dark:bg-interactive/10 dark:text-interactive;
+  }
+  /* devicon has no AI logo: a two-star sparkle, painted in the text color like the font glyphs */
+  .tech-ai {
+    @apply inline-block w-[1em] h-[1em] align-[-0.125em] bg-current;
+    --sparkle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M300 90Q330 270 510 300Q330 330 300 510Q270 330 90 300Q270 270 300 90ZM110 10Q124 96 210 110Q124 124 110 210Q96 124 10 110Q96 96 110 10Z'/%3E%3C/svg%3E");
+    -webkit-mask: var(--sparkle) center / contain no-repeat;
+    mask: var(--sparkle) center / contain no-repeat;
+  }
+  /* a filter swaps the whole list: the results fade in, the chips stay put */
+  #project-list .results {
+    transition: opacity var(--dur-color) var(--ease-out);
+  }
+  #project-list.htmx-added .results {
+    @apply opacity-0;
+  }
+  /* --- */
+
+  /* Typed headline (components/Typed.tsx): each page's headline types itself in, the one motion
+     that plays without user input. The caret is drawn after the character being typed and, on
+     the last one, keeps blinking. Reduced motion shows the text at once with a still caret. */
+  /* --- */
+  .typed-c {
+    @apply relative;
+    animation: type-in 1ms calc(var(--i) * var(--type-speed)) both;
+  }
+  .typed-c::after {
+    content: '';
+    @apply absolute left-full top-[.12em] bottom-[.08em] w-[max(2px,.06em)] bg-current opacity-0;
+    animation: caret-on var(--type-speed) step-end calc(var(--i) * var(--type-speed));
+  }
+  .typed-end::after {
+    animation: caret-blink 1s step-end calc(var(--i) * var(--type-speed)) infinite;
+  }
+  @keyframes type-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes caret-on {
+    from, to { opacity: 1; }
+  }
+  @keyframes caret-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .typed-c, .typed-c::after {
+      animation: none;
+    }
+    .typed-end::after {
+      @apply opacity-100;
+    }
+  }
+  /* --- */
+
+  /* Linked job (about#job-<id>, from the projects filter): the row the link points into gets a
+     tint for a second, then fades out, so the eye lands on it after the jump */
+  /* --- */
+  .job {
+    --flash: rgb(0 0 0 / .06);
+  }
+  .dark .job {
+    --flash: rgb(255 255 255 / .08);
+  }
+  .job:has(:target) {
+    animation: target-flash 1.3s ease-out;
+  }
+  @keyframes target-flash {
+    0%, 77% { background-color: var(--flash); }
+    100% { background-color: transparent; }
+  }
+  /* --- */
+
   /* Blurred placeholder (LQIP) while an image/video loads - see components/Img.tsx */
   /* --- */
   .lqip {
@@ -245,4 +350,24 @@
   }
 
   /* --- */
+}
+
+/* Disclosure open/close animation: ::details-content holds everything but the <summary>, and
+   interpolate-size lets its height transition to/from auto. Browsers without them keep the
+   instant native toggle. Closing animates too: content-visibility flips discretely at the end. */
+@supports selector(::details-content) {
+  :root {
+    interpolate-size: allow-keywords;
+  }
+  .disclosure::details-content {
+    block-size: 0;
+    opacity: 0;
+    overflow-y: clip;
+    transition: block-size var(--dur-disclosure) var(--ease-out), opacity var(--dur-disclosure) var(--ease-out),
+      content-visibility var(--dur-disclosure) allow-discrete;
+  }
+  .disclosure[open]::details-content {
+    block-size: auto;
+    opacity: 1;
+  }
 }

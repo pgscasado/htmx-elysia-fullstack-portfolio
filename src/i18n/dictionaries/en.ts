@@ -7,6 +7,10 @@ export const en: Dictionary = {
     contact: 'Contact',
     themeToggle: 'Toggle dark mode',
   },
+  footer: {
+    madeWithPre: 'Website made with ',
+    madeWithPost: ' by ',
+  },
   main: {
     heroGreeting: 'hi, my name is',
     heroRolePre: '',
@@ -18,7 +22,8 @@ export const en: Dictionary = {
   },
   about: {
     title: 'About',
-    lead: 'Full-stack developer for {years} years. These days I look after back-end and infrastructure at Simple HealthKit.',
+    heroTitle: 'Full-stack developer for {years} years.',
+    heroText: 'These days I look after back-end and infrastructure at Simple HealthKit. Before that: healthcare, open finance and conversational AI, always around APIs, integrations and what keeps them running.',
     workTitle: 'Experience',
     jobs: {
       shk: {
@@ -65,7 +70,11 @@ export const en: Dictionary = {
   projects: {
     title: 'Projects',
     filterLabel: 'Filter by technology',
+    filterAll: 'All',
+    noProjects: 'No public project on this list uses {tech} yet.',
+    workTitle: '{tech} at work',
     openDetails: 'See details',
+    kbTooltip: 'Calculated automatically by your browser on this visit',
     repoLink: 'See the code on GitHub',
     docLink: 'See the document',
     moreText: 'There are more projects beyond this list.',

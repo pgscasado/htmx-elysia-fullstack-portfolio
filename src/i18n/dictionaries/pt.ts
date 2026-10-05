@@ -5,6 +5,10 @@ export const pt = {
     contact: 'Contato',
     themeToggle: 'Alternar modo escuro',
   },
+  footer: {
+    madeWithPre: 'Website feito com ',
+    madeWithPost: ' por ',
+  },
   main: {
     heroGreeting: 'oi, meu nome é',
     heroRolePre: 'desenvolvedor ',
@@ -16,7 +20,8 @@ export const pt = {
   },
   about: {
     title: 'Sobre',
-    lead: 'Desenvolvedor full-stack há {years} anos. Hoje cuido de back-end e infraestrutura na Simple HealthKit.',
+    heroTitle: 'Desenvolvedor full-stack há {years} anos.',
+    heroText: 'Hoje cuido de back-end e infraestrutura na Simple HealthKit. Antes, passei por saúde, open finance e IA conversacional, sempre entre APIs, integrações e o que as mantém de pé.',
     workTitle: 'Experiência',
     jobs: {
       shk: {
@@ -63,7 +68,11 @@ export const pt = {
   projects: {
     title: 'Projetos',
     filterLabel: 'Filtrar por tecnologia',
+    filterAll: 'Todas',
+    noProjects: 'Nenhum projeto público desta lista usa {tech} ainda.',
+    workTitle: '{tech} no trabalho',
     openDetails: 'Ver detalhes',
+    kbTooltip: 'Calculado automaticamente pelo seu navegador nesta visita',
     repoLink: 'Ver o código no GitHub',
     docLink: 'Ver o documento',
     moreText: 'Tem mais projetos fora desta lista.',

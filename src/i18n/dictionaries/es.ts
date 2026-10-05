@@ -7,6 +7,10 @@ export const es: Dictionary = {
     contact: 'Contacto',
     themeToggle: 'Cambiar modo oscuro',
   },
+  footer: {
+    madeWithPre: 'Sitio hecho con ',
+    madeWithPost: ' por ',
+  },
   main: {
     heroGreeting: 'hola, me llamo',
     heroRolePre: 'desarrollador ',
@@ -18,7 +22,8 @@ export const es: Dictionary = {
   },
   about: {
     title: 'Sobre mí',
-    lead: 'Desarrollador full-stack desde hace {years} años. Hoy me ocupo del back-end y la infraestructura en Simple HealthKit.',
+    heroTitle: 'Desarrollador full-stack desde hace {years} años.',
+    heroText: 'Hoy me ocupo del back-end y la infraestructura en Simple HealthKit. Antes pasé por salud, open finance e IA conversacional, siempre entre APIs, integraciones y lo que las mantiene en pie.',
     workTitle: 'Experiencia',
     jobs: {
       shk: {
@@ -65,7 +70,11 @@ export const es: Dictionary = {
   projects: {
     title: 'Proyectos',
     filterLabel: 'Filtrar por tecnología',
+    filterAll: 'Todas',
+    noProjects: 'Ningún proyecto público de esta lista usa {tech} todavía.',
+    workTitle: '{tech} en el trabajo',
     openDetails: 'Ver detalles',
+    kbTooltip: 'Calculado automáticamente por tu navegador en esta visita',
     repoLink: 'Ver el código en GitHub',
     docLink: 'Ver el documento',
     moreText: 'Hay más proyectos fuera de esta lista.',

@@ -1,16 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 
 export default {
-  content: ['./src/components/*.tsx', './src/pages/*.tsx'],
+  content: ['./src/components/*.tsx', './src/components/util/*.ts', './src/pages/*.tsx'],
   darkMode: 'class',
   theme: {
     extend: {
       keyframes: {
-        // wipes text in left to right; the one motion that plays without user input
-        'reveal': {
-          from: { clipPath: 'inset(0 100% 0 0)' },
-          to: { clipPath: 'inset(0 0 0 0)' },
-        },
         'soft-bounce': {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(0.5rem)' },
@@ -20,7 +15,6 @@ export default {
       transitionDuration: { DEFAULT: 'var(--dur-color)' },
       transitionTimingFunction: { DEFAULT: 'var(--ease-out)' },
       animation: {
-        'reveal': 'reveal var(--dur-reveal) var(--ease-out) both',
         'soft-bounce': 'soft-bounce 2s ease-in-out infinite',
       },
       fontFamily: {
