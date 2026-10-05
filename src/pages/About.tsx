@@ -3,10 +3,11 @@ import { Navbar } from '@components';
 import { Base } from '@pages';
 import { Footer } from '@components/Footer';
 import { Icon } from '@components/Icon';
+import { TechTags } from '@components/TechTag';
+import { Typed } from '@components/Typed';
+import { jobs } from '@components/util/projects';
 import { t, type Key, type Locale } from '@i18n';
 
-// newest first; the research years close the timeline
-const jobs = ['shk', 'vinta', 'teddy', 'elife', 'ifpb'];
 const languages = ['pt', 'en', 'es', 'de', 'ja'];
 
 export default ({ lang }: { lang: Locale }) => {
@@ -17,16 +18,20 @@ export default ({ lang }: { lang: Locale }) => {
     <Base lang={lang} page='about' class='flex flex-col min-h-[100svh]'>
       <Navbar lang={lang} active='about'/>
       <main class='flex-1 mx-auto w-[90vw] md:w-[70vw] pt-[6vh] pb-24 flex flex-col gap-20'>
-        <h1 class='sr-only'>{t(lang, 'about.title')}</h1>
-        <p class='max-w-[30ch] font-roboto-serif font-light leading-snug text-[clamp(1.75rem,4.5vw,3rem)] text-secondary dark:text-primary'>
-          {t(lang, 'about.lead').replace('{years}', String(years))}
-        </p>
+        <header class='flex flex-col gap-5'>
+          <h1 class='max-w-[20ch] font-roboto-serif font-light leading-tight text-[clamp(2.25rem,6vw,3.75rem)] text-secondary dark:text-primary'>
+            <Typed text={t(lang, 'about.heroTitle').replace('{years}', String(years))}/>
+          </h1>
+          <p class='max-w-prose text-lg md:text-xl opacity-80'>{t(lang, 'about.heroText')}</p>
+        </header>
         <section>
           <h2 class='mb-4 opacity-60'>{t(lang, 'about.workTitle')}</h2>
-          {/* each job opens to its summary; dates sit in their own column from md up */}
+          {/* each job opens to its summary (animated in input.css); dates sit in their own
+              column from md up. The id is on the body so a link to it (from the projects filter)
+              opens the row in browsers that expand <details> on fragment navigation, and .job flashes */}
           <ol>
-            {jobs.map((id) => (
-              <li>
+            {jobs.map(({ id, stack }) => (
+              <li class='job -mx-4 px-4 rounded-xl'>
                 <details class='disclosure'>
                   <summary class='grid grid-cols-[1fr_auto] md:grid-cols-[11rem_1fr_auto] gap-x-6 gap-y-1 py-4 items-baseline'>
                     <span class='col-span-2 md:col-span-1 text-sm opacity-60 tabular-nums'>{job(id, 'dates')}</span>
@@ -36,7 +41,10 @@ export default ({ lang }: { lang: Locale }) => {
                     </span>
                     <Icon name='chevron-down' class='chevron'/>
                   </summary>
-                  <p class='max-w-prose pb-6 md:ml-[12.5rem] opacity-90'>{job(id, 'summary')}</p>
+                  <div id={`job-${id}`} class='pb-6 md:ml-[12.5rem] flex flex-col gap-4 scroll-mt-40'>
+                    <p class='max-w-prose opacity-90'>{job(id, 'summary')}</p>
+                    <TechTags stack={stack}/>
+                  </div>
                 </details>
               </li>
             )).join('')}
