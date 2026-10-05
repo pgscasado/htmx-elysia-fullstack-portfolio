@@ -69,7 +69,12 @@ export const Navbar: Component<{
         // listeners, registered once, so boosted navigations (which re-run this) don't stack them
         if (!window.__navInit) {
           window.__navInit = true
-          const toggleTheme = () => document.documentElement.classList.toggle('dark')
+          // flips the class right away and remembers the choice in a cookie for a year, which
+          // the server reads to render the next full page in the same mode (pages/index.tsx)
+          const toggleTheme = () => {
+            const dark = document.documentElement.classList.toggle('dark')
+            document.cookie = 'theme=' + (dark ? 'dark' : 'light') + '; path=/; max-age=31536000; samesite=lax'
+          }
           document.addEventListener('click', (e) => {
             if (e.target.closest && e.target.closest('#theme-selector')) toggleTheme()
           })

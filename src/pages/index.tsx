@@ -27,27 +27,35 @@ const fragmentFor = (headers: Record<string, string | null>, set: { headers: Rec
   return headers['hx-target'] === target;
 };
 
+// The theme lives in a cookie the toggle writes (components/Navbar.tsx), so the server renders
+// <html> in the right mode and nothing flips after load. Dark is the default; only an explicit
+// light choice drops the class. Every full page goes through here, like inlineCss.
+const fullPage = (html: string, cookie: string | null | undefined) => {
+  const page = inlineCss(html);
+  return /(?:^|;\s*)theme=light(?:;|$)/.test(cookie ?? '') ? page.replace(/(<html[^>]*?)\s+class=["']?dark["']?/, '$1') : page;
+};
+
 export const pageRouter = (app: Elysia) => {
   app.use(setup);
   for (const lang of LOCALES) {
     for (const { id, Page } of pages) {
-      app.get(localePath(lang, id), ({ html }) => html(inlineCss(<Page lang={lang} />)));
+      app.get(localePath(lang, id), ({ html, request }) => html(fullPage(<Page lang={lang} />, request.headers.get('cookie'))));
     }
     const projects = localePath(lang, 'projects');
-    app.get(projects, ({ html, query, headers, set }) => {
+    app.get(projects, ({ html, query, headers, set, request }) => {
       const tech = isProjectTech(query.tech) ? query.tech : undefined;
       return fragmentFor(headers, set, 'project-list')
         ? html(<ProjectList lang={lang} tech={tech} />)
-        : html(inlineCss(<Projects lang={lang} tech={tech} />));
+        : html(fullPage(<Projects lang={lang} tech={tech} />, request.headers.get('cookie')));
     });
-    app.get(`${projects}/:slug`, ({ html, params, headers, set }) => {
+    app.get(`${projects}/:slug`, ({ html, params, headers, set, request }) => {
       const project = findProject(params.slug);
       if (!project) {
-        return new Response(inlineCss(<Projects lang={lang} />), { status: 404, headers: { 'content-type': 'text/html' } });
+        return new Response(fullPage(<Projects lang={lang} />, request.headers.get('cookie')), { status: 404, headers: { 'content-type': 'text/html' } });
       }
       return fragmentFor(headers, set, `p-${project.slug}-body`)
         ? html(<ProjectDetails lang={lang} project={project} />)
-        : html(inlineCss(<Projects lang={lang} open={project.slug} />));
+        : html(fullPage(<Projects lang={lang} open={project.slug} />, request.headers.get('cookie')));
     });
   }
   app.get('/robots.txt', () => new Response(robotsTxt(), { headers: { 'content-type': 'text/plain; charset=utf-8' } }));
