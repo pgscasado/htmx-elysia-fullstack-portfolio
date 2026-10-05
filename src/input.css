@@ -295,16 +295,16 @@
   }
   /* --- */
 
-  /* Linked job (about#job-<id>, from the projects filter): the row the link points into gets a
-     tint for a second, then fades out, so the eye lands on it after the jump */
+  /* Linked section (components/GlideToHash.tsx, e.g. about#job-<id>): the .glide-row the link
+     points into gets a tint for a second, then fades out, so the eye lands on it after the jump */
   /* --- */
-  .job {
+  .glide-row {
     --flash: rgb(0 0 0 / .06);
   }
-  .dark .job {
+  .dark .glide-row {
     --flash: rgb(255 255 255 / .08);
   }
-  .job:has(:target) {
+  .glide-row:has(:target), .glide-row.flash {
     animation: target-flash 1.3s ease-out;
   }
   @keyframes target-flash {
@@ -398,5 +398,9 @@
   .disclosure[open]::details-content {
     block-size: auto;
     opacity: 1;
+  }
+  /* a row opened by a link skips the slide: a height changing mid-jump cancels the scroll to it */
+  .disclosure:has(:target)::details-content, .linked .disclosure::details-content {
+    transition: none;
   }
 }
