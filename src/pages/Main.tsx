@@ -3,8 +3,9 @@ import { Base } from '@pages';
 import { Navbar } from '@components/Navbar';
 import { IconRow } from '@components/IconRow';
 import techs from '@components/util/techs';
-import { techName, type Tech } from '@components/util/projects';
+import { techName, isProjectTech, type Tech } from '@components/util/projects';
 import { Highlight } from '@components/Highlight';
+import { Typed } from '@components/Typed';
 import { Icon } from '@components/Icon';
 import { BinaryWatermark } from '@components/BinaryWatermark';
 import { Footer } from '../components/Footer';
@@ -14,8 +15,8 @@ import { t, localePath, type Locale } from '@i18n';
 
 export default ({ lang }: { lang: Locale }) => {
   const stacks: [string, Tech[]][] = [
-    ['Back-end', ['nestjs', 'typescript', 'denojs', 'docker', 'postgresql', 'mongodb', 'redis', 'amazonwebservices']],
-    ['Front-end', ['html5', 'css3', 'typescript', 'react', 'nextjs', 'angularjs', 'tailwindcss', 'googlecloud']],
+    ['Back-end', ['nestjs', 'typescript', 'bun', 'elixir', 'postgresql', 'mongodb', 'redis', 'amazonwebservices', 'googlecloud']],
+    ['Front-end', ['typescript', 'react', 'nextjs', 'angularjs', 'materialui', 'tailwindcss', 'html5', 'css3', 'htmx']],
   ];
   return (
     <Base lang={lang} page='' class='flex flex-col'>
@@ -25,7 +26,7 @@ export default ({ lang }: { lang: Locale }) => {
         {/* -mt-12 cancels the navbar's bottom margin so the block sits at the true center */}
         <div class='flex-1 -mt-12 px-4 flex flex-col items-center justify-center text-center'>
           <p class='font-source-code text-sm md:text-base opacity-70 mb-3'>{t(lang, 'main.heroGreeting')}</p>
-          <h1 class='font-roboto-serif font-light text-5xl sm:text-6xl md:text-7xl'>Pedro Casado</h1>
+          <h1 class='font-roboto-serif font-light text-5xl sm:text-6xl md:text-7xl'><Typed text='Pedro Casado'/></h1>
           <p class='mt-4 text-xl md:text-2xl'>
             {t(lang, 'main.heroRolePre')}<Highlight>{t(lang, 'main.heroRoleHighlight')}</Highlight>{t(lang, 'main.heroRolePost')}
           </p>
@@ -59,7 +60,11 @@ export default ({ lang }: { lang: Locale }) => {
         {stacks.map(([label, icons]) => (
           <section class='grid md:grid-cols-[9rem_1fr] gap-x-8 gap-y-4 items-start'>
             <h3 class='opacity-60 md:pt-1'>{label}</h3>
-            <IconRow compact class='text-3xl' items={icons.map((i) => ({ icon: techs[i], caption: techName[i] ?? i }))}/>
+            {/* each icon opens the projects page filtered by it, when the filter has it */}
+            <IconRow compact class='text-3xl' items={icons.map((i) => ({
+              icon: techs[i], caption: techName[i] ?? i,
+              ...(isProjectTech(i) ? { href: `${localePath(lang, 'projects')}?tech=${i}`, attrs: { 'hx-boost': 'true' } } : {}),
+            }))}/>
           </section>
         )).join('')}
         <div class='pt-6'>
