@@ -77,9 +77,10 @@ export const jobs: Job[] = [
 // The filter bar, in this order: what should be seen first. Anything a project or job uses that
 // is missing here goes at the end, so a new stack entry never vanishes from the bar.
 const techOrder: Tech[] = [
-  'ai', 'typescript', 'react', 'nestjs', 'nodejs', 'bun', 'htmx', 'materialui', 'tailwindcss',
-  'elixir', 'postgresql', 'redis', 'amazonwebservices', 'googlecloud', 'express', 'angularjs', 'mongodb', 'javascript',
-  'html5', 'css3',
+  // the first 13 are what a phone shows before "show all" (FOLDED_AFTER in ProjectList.tsx)
+  'ai', 'typescript', 'react', 'nestjs', 'nodejs', 'bun', 'htmx', 'angularjs', 'elixir', 'postgresql',
+  'mongodb', 'redis', 'amazonwebservices',
+  'googlecloud', 'materialui', 'tailwindcss', 'express', 'javascript', 'html5', 'css3',
 ];
 const usedTechs = new Set([...projects, ...jobs].flatMap((x) => x.stack));
 export const projectTechs: Tech[] = [...new Set([...techOrder, ...usedTechs])].filter((s) => usedTechs.has(s));
