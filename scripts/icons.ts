@@ -7,7 +7,7 @@ import { Glob } from 'bun';
 import subsetFont from 'subset-font';
 import { readdirSync, unlinkSync } from 'fs';
 
-const DEVICON = 'https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1';
+const DEVICON = 'https://cdn.jsdelivr.net/gh/devicons/devicon@v2.17.0';
 
 const fonts = [
   {

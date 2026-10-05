@@ -36,4 +36,8 @@ export default {
   "nestjs": "devicon-nestjs-plain",
   "amazonwebservices": "devicon-amazonwebservices-plain",
   "googlecloud": "devicon-googlecloud-plain",
+  "bun": "devicon-bun-plain",
+  "htmx": "devicon-htmx-plain",
+  // no AI logo in devicon: a sparkle drawn in input.css (.tech-ai)
+  "ai": "tech-ai",
 }
