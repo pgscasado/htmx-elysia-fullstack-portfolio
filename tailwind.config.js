@@ -19,7 +19,7 @@ export default {
       },
       fontFamily: {
         'source-code': ['Source Code Pro', 'monospace'],
-        'ibm-serif': ['IBM Plex Serif', 'serif'],
+        'ibm-serif': ['IBM Plex Serif', 'IBM Plex Serif Fallback', 'serif'],
         'roboto-serif': ['Roboto Slab', 'serif'],
       },
       colors: {
