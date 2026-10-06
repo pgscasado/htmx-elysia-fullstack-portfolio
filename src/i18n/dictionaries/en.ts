@@ -81,6 +81,7 @@ export const en: Dictionary = {
     docLink: 'See the document',
     siteLink: 'Open the app',
     npmLink: 'See it on npm',
+    tryIt: 'Try it:',
     moreText: 'There are more projects beyond this list.',
     moreLink: "Let's talk",
     items: {

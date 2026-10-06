@@ -81,6 +81,7 @@ export const es: Dictionary = {
     docLink: 'Ver el documento',
     siteLink: 'Abrir la app',
     npmLink: 'Ver en npm',
+    tryIt: 'Pruébalo:',
     moreText: 'Hay más proyectos fuera de esta lista.',
     moreLink: 'Hablemos',
     items: {

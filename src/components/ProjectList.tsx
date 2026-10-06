@@ -23,6 +23,14 @@ const formatKb = (lang: Locale, kb: number) =>
 // /projects/<slug> is loaded directly.
 export const ProjectDetails: Component<{ lang: Locale, project: Project }> = ({ lang, project }) => (
   <div class='project-details flex flex-col gap-6 pt-1 pb-10'>
+    {/* the command to try a CLI, in the site's green. One click selects all of it (select-all),
+        and the "$" prompt stays out of what gets copied */}
+    {project.npx
+      ? <p class='flex flex-wrap items-center gap-x-3 gap-y-2'>
+          <span class='text-sm opacity-70'>{t(lang, 'projects.tryIt')}</span>
+          <code class='font-source-code text-sm md:text-base px-3.5 py-2 rounded-lg border border-interactive-600/30 bg-interactive-600/10 text-interactive-800 dark:border-interactive/30 dark:bg-interactive/10 dark:text-interactive select-all'><span class='select-none opacity-50'>$ </span>{project.npx}</code>
+        </p>
+      : ''}
     <ul class='flex flex-col gap-2 max-w-prose'>
       {Array.from({ length: project.details }, (_, i) => <li>{tp(lang, project, `d${i + 1}`)}</li>).join('')}
     </ul>

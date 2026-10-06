@@ -23,6 +23,8 @@ export type Project = {
   link: { href: string, kind: 'repo' | 'doc' | 'site' };
   // shown after it, e.g. the npm package of a CLI
   extra?: { href: string, kind: 'npm' }[];
+  // a command to try it right away, shown highlighted at the top of the details
+  npx?: string;
   details: number;
   media: Media[];
   note?: boolean;
@@ -43,12 +45,12 @@ export const projects: Project[] = [
   {
     slug: 'sealed-gist', key: 'sealedGist', stack: ['bun', 'htmx', 'typescript', 'tailwindcss', 'nodejs'],
     link: { href: links.projects.sealedGist, kind: 'site' }, extra: [{ href: links.npm.sealedGist, kind: 'npm' }],
-    details: 3, media: [],
+    npx: 'npx sealed-gist file.ts', details: 3, media: [],
   },
   {
     slug: 'cli-authenticator', key: 'cliAuthenticator', stack: ['nodejs', 'javascript'],
     link: { href: links.projects.cliAuthenticator, kind: 'repo' }, extra: [{ href: links.npm.cliAuthenticator, kind: 'npm' }],
-    details: 3, note: true,
+    npx: 'npx cli-authenticator', details: 3, note: true,
     media: [
       { kind: 'img', src: '/static/projects/cli-authenticator/live.gif', width: '792', height: '560', key: 'live' },
       { kind: 'video', src: '/static/projects/cli-authenticator/camera.mp4', width: '792', height: '560', key: 'camera' },

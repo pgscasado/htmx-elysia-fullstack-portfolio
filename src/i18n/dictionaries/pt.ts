@@ -79,6 +79,7 @@ export const pt = {
     docLink: 'Ver o documento',
     siteLink: 'Abrir o app',
     npmLink: 'Ver no npm',
+    tryIt: 'Experimente:',
     moreText: 'Tem mais projetos fora desta lista.',
     moreLink: 'Vamos conversar',
     items: {
