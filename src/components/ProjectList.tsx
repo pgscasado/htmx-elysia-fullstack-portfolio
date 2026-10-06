@@ -64,7 +64,7 @@ const ProjectRow: Component<{ lang: Locale, project: Project, open: boolean, tec
   return (
     <details
       id={`p-${project.slug}`}
-      class='disclosure'
+      class='disclosure glide-row -mx-4 px-4 rounded-xl scroll-mt-4'
       {...(open
         ? { open: '' }
         : { 'hx-get': path, 'hx-trigger': 'toggle once', 'hx-target': `#${body}`, 'hx-push-url': 'true' })}

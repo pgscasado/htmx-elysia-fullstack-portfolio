@@ -1,20 +1,21 @@
 import render from '@core/render';
 import type { Component } from '@root/types/component';
 
-// Soft scroll to a linked section. A fresh load of page#<id> makes the browser jump straight
-// there; render this after the targets (it has to run while the page is still parsing, before
-// that jump) and, when <id> is on an element marked data-glide, the page opens at the top and
-// glides down instead. On the way it opens the <details> around the target without its slide
-// (a height changing mid-scroll cancels it) and, once the scroll ends, flashes the closest
-// .glide-row (see input.css). Without JS, or for unmarked ids, the native jump is untouched, and
-// .glide-row still flashes through :target.
+// Soft scroll to a linked section, on every page (Base renders it after the content). A fresh
+// load of page#<id> makes the browser jump straight there; this runs while the page is still
+// parsing, before that jump, so the page opens at the top and glides down to <id> instead. On the
+// way it opens the <details> around (or at) the target without its slide (a height changing
+// mid-scroll cancels it) and, once the scroll ends, flashes the closest .glide-row, or the target
+// itself (see input.css). Without JS the native jump is untouched, and .glide-row still flashes
+// through :target. Scripts htmx swaps in later run after load, so they leave hashes alone.
 export const GlideToHash: Component<{}> = () => (
   <script>
     {`
       (() => {
+        if (document.readyState !== 'loading') return
         const id = decodeURIComponent(location.hash.slice(1))
         const marker = id && document.getElementById(id)
-        if (!marker || !marker.hasAttribute('data-glide')) return
+        if (!marker) return
         // no id, nothing for the browser to jump to; it comes back once the glide starts
         marker.removeAttribute('id')
         const row = marker.closest('.glide-row') || marker

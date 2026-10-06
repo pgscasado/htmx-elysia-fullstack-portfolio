@@ -11,6 +11,7 @@ import { ProjectList, ProjectDetails } from '@components/ProjectList';
 import { findProject, isProjectTech } from '@components/util/projects';
 import { LOCALES, localeToHtmlLang, localePath, type Locale, type PageId } from '@i18n';
 import { seoHead, robotsTxt, sitemapXml } from '@components/util/seo';
+import { GlideToHash } from '@components/GlideToHash';
 
 // Projects has its own routes below
 const pages: { id: PageId; Page: (props: { lang: Locale }) => string }[] = [
@@ -84,5 +85,6 @@ export const Base = ({ children, class: classes, lang, page }: { children?: stri
 </head>
 <body class='h-full bg-base-light-500/10 text-base-dark dark:bg-base-dark dark:text-base-light${classes ? ` ${classes}`: ''} transition-colors'>
 ${children?.join('')}
+${GlideToHash({})}
 </body>
 `;

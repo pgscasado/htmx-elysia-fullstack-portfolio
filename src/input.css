@@ -295,16 +295,17 @@
   }
   /* --- */
 
-  /* Linked section (components/GlideToHash.tsx, e.g. about#job-<id>): the .glide-row the link
-     points into gets a tint for a second, then fades out, so the eye lands on it after the jump */
+  /* Linked section (components/GlideToHash.tsx, any page#<id>, e.g. about#job-<id> or
+     projects#p-<slug>): the .glide-row the link points into, or the target itself, gets a tint
+     for a second, then fades out, so the eye lands on it after the jump */
   /* --- */
-  .glide-row {
+  :root {
     --flash: rgb(0 0 0 / .06);
   }
-  .dark .glide-row {
+  .dark {
     --flash: rgb(255 255 255 / .08);
   }
-  .glide-row:has(:target), .glide-row.flash {
+  .glide-row:has(:target), .glide-row:target, .flash {
     animation: target-flash 1.3s ease-out;
   }
   @keyframes target-flash {
@@ -400,7 +401,8 @@
     opacity: 1;
   }
   /* a row opened by a link skips the slide: a height changing mid-jump cancels the scroll to it */
-  .disclosure:has(:target)::details-content, .linked .disclosure::details-content {
+  .disclosure:target::details-content, .disclosure:has(:target)::details-content,
+  .linked .disclosure::details-content, .disclosure.linked::details-content {
     transition: none;
   }
 }
