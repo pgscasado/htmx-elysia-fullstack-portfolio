@@ -46,11 +46,20 @@ export const ProjectDetails: Component<{ lang: Locale, project: Project }> = ({ 
         </div>
       : ''}
     {project.note ? <p class='text-xs opacity-60'>{tp(lang, project, 'note')}</p> : ''}
-    <a class='text-link w-fit' href={project.link.href} target='_blank' rel='noopener noreferrer'>
-      {t(lang, project.link.kind === 'repo' ? 'projects.repoLink' : 'projects.docLink')}
-    </a>
+    <p class='flex flex-wrap gap-x-6 gap-y-2'>
+      {[project.link, ...(project.extra ?? [])].map((l) => (
+        <a class='text-link w-fit' href={l.href} target='_blank' rel='noopener noreferrer'>{t(lang, linkLabel[l.kind])}</a>
+      )).join('')}
+    </p>
   </div>
 );
+
+const linkLabel: Record<Project['link']['kind'] | NonNullable<Project['extra']>[number]['kind'], Key> = {
+  repo: 'projects.repoLink',
+  doc: 'projects.docLink',
+  site: 'projects.siteLink',
+  npm: 'projects.npmLink',
+};
 
 // One project: a native <details> (so it opens and closes without JS) whose body htmx fetches
 // the first time it opens, pushing /projects/<slug> to the address bar.

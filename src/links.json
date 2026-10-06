@@ -16,8 +16,13 @@
     "htmxElysia": "https://github.com/pgscasado/htmx-elysia-fullstack/",
     "cliAuthenticator": "https://github.com/pgscasado/cli-authenticator/",
     "aiAgentManager": "https://github.com/pgscasado/ai-agent-manager/",
+    "sealedGist": "https://gist.pedrocasado.com",
     "item3": "https://drive.google.com/file/d/1cSyCvpOgIb2VhJZHIWtCOQ_5Xpxm3Zqq/view",
     "item4": "https://drive.google.com/file/d/1WjjuyG3U9Q7AbcRfIshSUeHDQOqLMs6F/view"
+  },
+  "npm": {
+    "sealedGist": "https://www.npmjs.com/package/sealed-gist",
+    "cliAuthenticator": "https://www.npmjs.com/package/cli-authenticator"
   },
   "references": {
     "elysia": "https://elysiajs.com/",

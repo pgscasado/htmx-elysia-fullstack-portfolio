@@ -79,6 +79,8 @@ export const en: Dictionary = {
     kbTooltip: 'Calculated automatically by your browser on this visit',
     repoLink: 'See the code on GitHub',
     docLink: 'See the document',
+    siteLink: 'Open the app',
+    npmLink: 'See it on npm',
     moreText: 'There are more projects beyond this list.',
     moreLink: "Let's talk",
     items: {
@@ -94,6 +96,13 @@ export const en: Dictionary = {
         navCaption: 'Navigation with HTMX attributes',
         routerAlt: 'Code from src/pages/index.tsx: the page list and pageRouter, which registers one Elysia route per language rendering the JSX page',
         routerCaption: 'One route per language, rendered on the server',
+      },
+      sealedGist: {
+        name: 'sealed-gist',
+        line: 'Share code behind a password, as secret GitHub gists only the password can decrypt.',
+        d1: 'Encrypted in the browser or the terminal with AES-256-GCM: neither the server nor GitHub see the code.',
+        d2: 'Same stack as this portfolio, under a strict CSP; highlighting loads only the languages a note uses.',
+        d3: 'Also a zero-dependency npm CLI, npx sealed-gist, running the very same encryption code as the site.',
       },
       cliAuthenticator: {
         name: 'cli-authenticator',

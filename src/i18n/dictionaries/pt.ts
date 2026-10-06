@@ -77,6 +77,8 @@ export const pt = {
     kbTooltip: 'Calculado automaticamente pelo seu navegador nesta visita',
     repoLink: 'Ver o código no GitHub',
     docLink: 'Ver o documento',
+    siteLink: 'Abrir o app',
+    npmLink: 'Ver no npm',
     moreText: 'Tem mais projetos fora desta lista.',
     moreLink: 'Vamos conversar',
     items: {
@@ -92,6 +94,13 @@ export const pt = {
         navCaption: 'Navegação com atributos HTMX',
         routerAlt: 'Código de src/pages/index.tsx: a lista de páginas e o pageRouter, que registra no Elysia uma rota por idioma renderizando a página em JSX',
         routerCaption: 'Uma rota por idioma, renderizada no servidor',
+      },
+      sealedGist: {
+        name: 'sealed-gist',
+        line: 'Compartilhe código com senha, em gists secretos do GitHub que só quem tem a senha decifra.',
+        d1: 'Cifrado no navegador ou no terminal com AES-256-GCM: nem o servidor nem o GitHub veem o código.',
+        d2: 'Mesma stack deste portfólio, sob uma CSP rígida; o realce carrega só as linguagens que a nota usa.',
+        d3: 'Também é uma CLI no npm sem dependências, npx sealed-gist, com o mesmo código de criptografia do site.',
       },
       cliAuthenticator: {
         name: 'cli-authenticator',
