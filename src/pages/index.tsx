@@ -76,7 +76,7 @@ export const Base = ({ children, class: classes, lang, page }: { children?: stri
   <link rel='stylesheet' href='${INLINE_CSS_MARKER}' />
   <noscript><style>.lqip>img,.lqip>video{opacity:1}</style></noscript>
   <link rel='icon' href='${asset('favicon.ico')}' sizes='16x16 32x32 48x48' />
-  <link rel='icon' type='image/png' href='${asset('icon-512.png')}' sizes='512x512' />
+  <link rel='icon' type='image/png' href='${asset('icon-192.png')}' sizes='192x192' />
   <link rel='apple-touch-icon' href='${asset('apple-touch-icon.png')}' />
   <script src='${asset('htmx.min.js')}' defer></script>
   <script src='${asset('htmx.json-enc.js')}' defer></script>

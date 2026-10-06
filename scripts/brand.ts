@@ -137,7 +137,8 @@ for (const [name, theme] of Object.entries(themes)) {
   // favicons: plain mark at tab sizes (digits behind it would just be noise), watermark from 180 up
   const faviconSvg = svg(64, 64, mark(64, theme), theme, 12);
   write(`favicon-${name}.ico`, ico([16, 32, 48].map(size => ({ size, data: png(faviconSvg, size) }))));
-  for (const size of [180, 512]) {
+  // 192 is a multiple of 48, which Google requires before it shows a favicon in results
+  for (const size of [180, 192, 512]) {
     const bg = digits(size, size, { cols: 4, rows: 4, density: 0.7, sizes: [size / 9, size / 7], avoid: [[size * 0.19, size * 0.3, size * 0.62, size * 0.44]] }, theme, rng(seed));
     write(`icon-${size}-${name}.png`, png(svg(size, size, bg + mark(size, theme), theme)));
   }
