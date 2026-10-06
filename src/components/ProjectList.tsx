@@ -3,7 +3,7 @@ import { readFileSync } from 'fs';
 import type { Component } from '@root/types/component';
 import { Icon } from '@components/Icon';
 import { TechTags } from '@components/TechTag';
-import { Img, Video } from '@components/Img';
+import { Img, Video, versioned } from '@components/Img';
 import techs from '@components/util/techs';
 import { projects, jobs, projectTechs, techName, type Project, type Tech } from '@components/util/projects';
 import { t, localePath, localeToHtmlLang, type Key, type Locale } from '@i18n';
@@ -38,7 +38,7 @@ export const ProjectDetails: Component<{ lang: Locale, project: Project }> = ({ 
             const last = project.media.length % 2 === 1 && i === project.media.length - 1 && project.media.length > 1;
             return (
               <figure class={`flex flex-col${last ? ' md:col-span-2 md:w-1/2 md:mx-auto' : ''}`}>
-                {m.zoom ? <a href={m.src} target='_blank' rel='noopener noreferrer' class='w-full'>{el}</a> : el}
+                {m.zoom ? <a href={versioned(m.src)} target='_blank' rel='noopener noreferrer' class='w-full'>{el}</a> : el}
                 <figcaption class='text-sm mt-2 opacity-70'>{tp(lang, project, `${m.key}Caption`)}</figcaption>
               </figure>
             );

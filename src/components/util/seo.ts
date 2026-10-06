@@ -1,5 +1,6 @@
 import links from '@root/links.json';
 import { contact } from '@components/util/contacts';
+import { asset } from '@core/asset';
 import { LOCALES, DEFAULT_LOCALE, localeToHtmlLang, localePath, t, type Key, type Locale, type PageId } from '@i18n';
 
 export const PAGE_IDS: PageId[] = ['', 'about', 'projects', 'contact'];
@@ -10,7 +11,8 @@ const escapeAttr = (s: string) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;
 
 export const absoluteUrl = (path: string) => `${links.site}${path}`;
 
-const ogImage = absoluteUrl('/static/og.png');
+// versioned like every other asset, so LinkedIn/WhatsApp re-scrape the preview when it changes
+const ogImage = absoluteUrl(asset('og.png'));
 
 // Tells Google who the site is about, and ties it to the GitHub/LinkedIn profiles.
 const structuredData = () => JSON.stringify({

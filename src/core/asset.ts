@@ -12,9 +12,9 @@ const cached = <T>(fn: (path: string) => T) => {
   };
 };
 
-const hashOf = cached((path) => Bun.hash(readFileSync(`public/${path}`)).toString(36).slice(0, 8));
+const hashOf = cached((path) => Bun.hash(readFileSync(`public/${path}`)).toString(16).padStart(16, '0').slice(0, 8));
 
-// /static URL with a content hash, so nginx can cache it for a year and a deploy still busts it
+// /static URL with a hex content hash (?v=1a2b3c4d), so nginx can cache it for a year and a deploy still busts it
 export const asset = (path: string) => `/static/${path}?v=${hashOf(path)}`;
 
 // The whole stylesheet is ~6KB gzipped, so inlining it beats a render-blocking request (which

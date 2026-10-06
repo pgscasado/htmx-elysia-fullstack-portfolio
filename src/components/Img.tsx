@@ -4,7 +4,7 @@ import placeholders from '@components/util/lqip.json';
 import { asset } from '@core/asset';
 
 // placeholders are keyed by the plain /static path; the browser gets a content-hashed URL
-const versioned = (src: string) => asset(src.replace(/^\/static\//, ''));
+export const versioned = (src: string) => asset(src.replace(/^\/static\//, ''));
 
 // 6x6 PNG (see scripts/lqip.ts) stretched and gaussian-blurred inside an SVG. The alpha
 // table snaps the blur's own faded edges back to opaque, then a feathered rect mask fades
