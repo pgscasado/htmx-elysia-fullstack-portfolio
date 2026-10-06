@@ -114,14 +114,19 @@ for (const [name, theme] of Object.entries(themes)) {
   // LinkedIn banner, 1584x396. The profile photo covers the bottom-left on desktop and the
   // center on mobile, so the titled variant keeps its text on the right
   const [bw, bh] = [1584, 396];
+  // The @4x copies are the same vector art rendered at 6336x1584, for high-DPI screens
   const banner: Grid = { cols: 16, rows: 4, density: 0.65, sizes: [26, 32, 40] };
-  write(`linkedin-banner-${name}.png`, png(svg(bw, bh, digits(bw, bh, banner, theme, rng(seed)), theme)));
-  write(`linkedin-banner-titled-${name}.png`, png(svg(bw, bh, digits(bw, bh, { ...banner, avoid: [[920, 90, 620, 230]] }, theme, rng(seed)) +
+  const plainBanner = svg(bw, bh, digits(bw, bh, banner, theme, rng(seed)), theme);
+  const titledBanner = svg(bw, bh, digits(bw, bh, { ...banner, avoid: [[920, 90, 620, 230]] }, theme, rng(seed)) +
     `<g text-anchor="end">` +
     `<text x="${bw - 96}" y="186" font-family="Roboto Slab" font-weight="300" font-size="84" fill="${theme.text}">Pedro Casado</text>` +
     `<text x="${bw - 96}" y="246" font-family="Source Code Pro" font-size="34" fill="${theme.text}"><tspan fill="${theme.accent}">full-stack</tspan> developer</text>` +
     `<text x="${bw - 96}" y="300" font-family="Source Code Pro" font-size="24" fill="${theme.text}" fill-opacity="0.6">pedrocasado.com</text>` +
-    `</g>`, theme)));
+    `</g>`, theme);
+  for (const [file, markup] of [['linkedin-banner', plainBanner], ['linkedin-banner-titled', titledBanner]]) {
+    write(`${file}-${name}.png`, png(markup));
+    write(`${file}-${name}@4x.png`, png(markup, bw * 4));
+  }
 
   // WhatsApp crops to a circle and recommends 640x640. Plain watermark, plus the "01" mark
   const p = 640;
