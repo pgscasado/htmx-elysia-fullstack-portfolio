@@ -7,7 +7,8 @@
     "update-css": "tailwindcss -i ./src/input.css -o ./public/styles.css --minify",
     "update-css:dev": "tailwindcss -i ./src/input.css -o ./public/styles.css --watch -p --minify",
     "lqip": "bun scripts/lqip.ts",
-    "icons": "bun scripts/icons.ts"
+    "icons": "bun scripts/icons.ts",
+    "brand": "bun scripts/brand.ts"
   },
   "dependencies": {
     "@elysiajs/html": "0.5.x",
@@ -20,6 +21,7 @@
     "typed-html": "^3.0.1"
   },
   "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
     "@types/html-minifier": "^4.0.2",
     "@types/html-minifier-terser": "^7.0.0",
     "bun-html-live-reload": "github:aabccd021/bun-html-live-reload",
